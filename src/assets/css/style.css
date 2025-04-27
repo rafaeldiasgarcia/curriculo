@@ -498,6 +498,7 @@ main.container {
 @media (max-width: 768px) {
     body {
         font-size: 15px;
+        /* Removido o padding-bottom: 80px; */
     }
     .container {
         padding: 0 15px;
@@ -510,7 +511,7 @@ main.container {
     }
     .hero-subtitle {
         font-size: 1.4em;
-        min-height: 3.2em;
+        min-height: 3.5em;
     }
     .hero-description {
         font-size: 1em;
@@ -526,14 +527,18 @@ main.container {
         grid-template-columns: 1fr; /* Uma coluna em telas menores */
     }
     #scrollToTopBtn {
-        /* bottom: 20px; */ /* Valor antigo */
-        bottom: 65px;  /* <<< NOVO VALOR (Ajuste conforme necessário) */
+        bottom: 85px;   /* Botão mais para cima */
         right: 20px;
         padding: 12px;
         font-size: 16px;
     }
+    /* Adicionar ajuste de fonte do footer aqui se necessário também */
+    /* .footer p {
+        font-size: 0.9em;
+    } */
 }
 
+/* Combinado e corrigido para 480px */
 @media (max-width: 480px) {
     .navbar {
         padding: 10px 0;
@@ -554,7 +559,7 @@ main.container {
     }
     .hero-subtitle {
         font-size: 1.1em;
-        min-height: 3em;
+        min-height: 3.5em;
     }
     .profile-pic {
         width: 100px;
@@ -574,19 +579,16 @@ main.container {
     .card {
         padding: 20px;
     }
-}
 
-@media (max-width: 480px) {
+    /* Estilos para certificados em 480px */
     .cert-item {
         flex-direction: column; /* Mantém texto e grupo de botões empilhados */
         align-items: flex-start; /* Mantém alinhamento à esquerda */
     }
     .cert-text {
         margin-right: 0;
-        margin-bottom: 12px; /* Aumentar um pouco o espaço abaixo do texto */
+        margin-bottom: 12px; /* Espaço abaixo do texto */
     }
-
-    /* NOVO: Estilo para o grupo de botões */
     .cert-buttons-group {
         display: flex; /* Faz os botões ficarem em linha */
         flex-wrap: wrap; /* Permite que quebrem para a linha de baixo se não couberem */
@@ -594,7 +596,15 @@ main.container {
         width: 100%; /* Faz o grupo ocupar a largura para o wrap funcionar bem */
     }
 
+    /* Estilo para o botão 'Voltar ao Topo' em 480px */
     #scrollToTopBtn {
-        bottom: 60px;
+        bottom: 80px;   /* Botão mais para cima */
+        /* Adicione 'right' se ele não estiver definido globalmente ou na media query de 768px */
+        /* right: 15px; */ /* Exemplo */
+    }
+
+    /* <<< ADICIONADO: Reduzir fonte do rodapé para evitar quebra de linha */
+    .footer p {
+        font-size: 0.85em; /* Ajuste fino se necessário (ex: 13px, 0.9em) */
     }
 }

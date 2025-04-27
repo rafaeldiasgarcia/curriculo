@@ -146,4 +146,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("Portfólio Interativo Carregado!");
 
-}); // Fim do DOMContentLoaded
+});
+// Fim do DOMContentLoaded

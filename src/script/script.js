@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Configurações ---
     const typingTextElement = document.getElementById('typing-effect');
-    const textToType = "Estudante de Engenharia de Software | Backend Developer"; // Texto a ser digitado
+    const textToType = "Estudante de Engenharia de Software | Backend Dev"; // Texto a ser digitado
     const typingSpeed = 70; // Velocidade de digitação (ms)
     const deletingSpeed = 40; // Velocidade de apagar (ms)
     const delayBeforeDelete = 1500; // Tempo antes de apagar

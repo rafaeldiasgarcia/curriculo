@@ -509,7 +509,8 @@ main.container {
         font-size: 2em;
     }
     .hero-subtitle {
-        font-size: 1.2em;
+        font-size: 1.4em;
+        min-height: 3.2em;
     }
     .hero-description {
         font-size: 1em;
@@ -525,7 +526,8 @@ main.container {
         grid-template-columns: 1fr; /* Uma coluna em telas menores */
     }
     #scrollToTopBtn {
-        bottom: 20px;
+        /* bottom: 20px; */ /* Valor antigo */
+        bottom: 65px;  /* <<< NOVO VALOR (Ajuste conforme necessário) */
         right: 20px;
         padding: 12px;
         font-size: 16px;
@@ -552,6 +554,7 @@ main.container {
     }
     .hero-subtitle {
         font-size: 1.1em;
+        min-height: 3em;
     }
     .profile-pic {
         width: 100px;
@@ -575,14 +578,23 @@ main.container {
 
 @media (max-width: 480px) {
     .cert-item {
-        flex-direction: column; /* Empilha texto e botão */
-        align-items: flex-start; /* Alinha tudo à esquerda */
+        flex-direction: column; /* Mantém texto e grupo de botões empilhados */
+        align-items: flex-start; /* Mantém alinhamento à esquerda */
     }
     .cert-text {
         margin-right: 0;
-        margin-bottom: 8px; /* Espaço abaixo do texto */
+        margin-bottom: 12px; /* Aumentar um pouco o espaço abaixo do texto */
     }
-    .cert-link-btn {
-        align-self: flex-start; /* Alinha o botão à esquerda */
+
+    /* NOVO: Estilo para o grupo de botões */
+    .cert-buttons-group {
+        display: flex; /* Faz os botões ficarem em linha */
+        flex-wrap: wrap; /* Permite que quebrem para a linha de baixo se não couberem */
+        gap: 8px; /* Espaço entre os botões */
+        width: 100%; /* Faz o grupo ocupar a largura para o wrap funcionar bem */
+    }
+
+    #scrollToTopBtn {
+        bottom: 60px;
     }
 }

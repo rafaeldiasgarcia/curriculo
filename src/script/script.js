@@ -1,95 +1,74 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // --- Configurações ---
     const typingTextElement = document.getElementById('typing-effect');
-    const textToType = "Estudante de Engenharia de Software | Backend Dev"; // Texto a ser digitado
-    const typingSpeed = 70; // Velocidade de digitação (ms)
-    const deletingSpeed = 40; // Velocidade de apagar (ms)
-    const delayBeforeDelete = 1500; // Tempo antes de apagar
-    const delayBeforeStart = 500; // Tempo antes de começar
-
+    const textToType = "Estudante de Engenharia de Software | Backend Dev";
+    const typingSpeed = 50;
+    const deletingSpeed = 30;
+    const delayBeforeDelete = 4000;
+    const delayBeforeStart = 1700;
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     const scrollLinks = document.querySelectorAll('.scroll-link');
     const animatedSections = document.querySelectorAll('.animate-on-scroll');
     const currentYearElement = document.getElementById('currentYear');
-    const profilePic = document.getElementById('profilePic'); // Elemento da foto de perfil
-
-    // --- Efeito de Digitação ---
+    const profilePic = document.getElementById('profilePic');
+    const themeToggleButton = document.getElementById('theme-toggle-btn');
+    const bodyElement = document.body;
     let charIndex = 0;
     let isDeleting = false;
-
     function typeEffect() {
+        if (!typingTextElement) return;
         const currentText = textToType;
+        let textContent = '';
         if (isDeleting) {
-            // Apagando
-            typingTextElement.textContent = currentText.substring(0, charIndex - 1);
+            textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
         } else {
-            // Digitanddo
-            typingTextElement.textContent = currentText.substring(0, charIndex + 1);
+            textContent = currentText.substring(0, charIndex + 1);
             charIndex++;
         }
-
-        // Verifica se terminou de digitar ou apagar
+        typingTextElement.textContent = textContent;
         if (!isDeleting && charIndex === currentText.length) {
-            // Terminou de digitar, espera e começa a apagar
-            setTimeout(() => isDeleting = true, delayBeforeDelete);
+            setTimeout(() => { isDeleting = true; }, delayBeforeDelete);
         } else if (isDeleting && charIndex === 0) {
-            // Terminou de apagar, começa a digitar novamente
             isDeleting = false;
-            // Poderia adicionar lógica para trocar o texto aqui se quisesse múltiplos textos
         }
-
-        // Define a próxima chamada da função
         const speed = isDeleting ? deletingSpeed : typingSpeed;
         setTimeout(typeEffect, speed);
     }
-    // Inicia o efeito de digitação após um delay inicial
     if (typingTextElement) {
         setTimeout(typeEffect, delayBeforeStart);
     }
-
-
-    // --- Botão Voltar ao Topo ---
-    window.onscroll = function() {
-        scrollFunction();
-    };
-
     function scrollFunction() {
+        if (!scrollToTopBtn) return;
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             scrollToTopBtn.style.display = "block";
-            // Adiciona uma classe para animação de fade-in (opcional)
-            setTimeout(() => scrollToTopBtn.style.opacity = "1", 10);
+            setTimeout(() => {
+                if (scrollToTopBtn.style.display === "block") {
+                    scrollToTopBtn.style.opacity = "1";
+                }
+            }, 10);
         } else {
             scrollToTopBtn.style.opacity = "0";
-            // Esconde após a animação de fade-out
             setTimeout(() => {
-                if (scrollToTopBtn.style.opacity === "0") { // Verifica se ainda está oculto
+                if (scrollToTopBtn.style.opacity === "0") {
                     scrollToTopBtn.style.display = "none";
                 }
-            }, 300); // Deve corresponder à duração da transição CSS
+            }, 300);
         }
     }
-
-    // Ação de clique para o botão Voltar ao Topo
     if (scrollToTopBtn) {
+        window.addEventListener('scroll', scrollFunction);
         scrollToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-    // --- Rolagem Suave para Links Internos ---
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // Previne o comportamento padrão do link
-            const targetId = this.getAttribute('href'); // Pega o href (#projetos, #sobre, etc.)
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
-                // Calcula a posição do elemento alvo e ajusta pela altura da navbar fixa
                 const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10; // -10 para um pequeno espaço extra
-
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -97,54 +76,70 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // --- Animação ao Rolar (Intersection Observer) ---
-    const observerOptions = {
-        root: null, // Observa em relação ao viewport
-        rootMargin: '0px',
-        threshold: 0.15 // Ativa quando 15% do elemento está visível
-    };
-
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                // Opcional: parar de observar após a animação
-                // observer.unobserve(entry.target);
-            } else {
-                // Opcional: remover a classe se sair da tela (para reanimar)
-                // entry.target.classList.remove('is-visible');
-            }
+    if (animatedSections.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                }
+            });
+        };
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        animatedSections.forEach(section => {
+            observer.observe(section);
         });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    animatedSections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // --- Atualizar Ano no Rodapé ---
+    }
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
     }
-
-    // --- Efeito sutil na foto de perfil ao rolar (opcional) ---
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
+        if (!profilePic) return;
         let st = window.pageYOffset || document.documentElement.scrollTop;
-        if (profilePic) {
-            if (st > lastScrollTop && st > 50) { // Rolando para baixo
-                // profilePic.style.transform = 'scale(0.95)'; // Exemplo: diminuir um pouco
-            } else { // Rolando para cima
-                // profilePic.style.transform = 'scale(1)';
+        if (st > lastScrollTop && st > 50) {
+        } else {
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+    }, false);
+    const currentTheme = localStorage.getItem('theme');
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            bodyElement.classList.add('light-mode');
+        } else {
+            bodyElement.classList.remove('light-mode');
+            if (theme !== 'dark') {
+                localStorage.setItem('theme', 'dark');
             }
         }
-        lastScrollTop = st <= 0 ? 0 : st; // Para tratar o caso de rolagem para o topo
-    }, false);
-
-
+    }
+    if (currentTheme) {
+        applyTheme(currentTheme);
+    } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            applyTheme('dark');
+        } else {
+            applyTheme('dark');
+        }
+    }
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+            let newTheme;
+            if (bodyElement.classList.contains('light-mode')) {
+                bodyElement.classList.remove('light-mode');
+                newTheme = 'dark';
+            } else {
+                bodyElement.classList.add('light-mode');
+                newTheme = 'light';
+            }
+            localStorage.setItem('theme', newTheme);
+        });
+    }
     console.log("Portfólio Interativo Carregado!");
-
 });
-// Fim do DOMContentLoaded

@@ -1,17 +1,37 @@
 /* Reset Básico e Variáveis de Cor */
 :root {
-    --bg-color: #1a1d24; /* Fundo escuro principal */
-    --card-bg-color: #252a34; /* Fundo dos cards */
-    --primary-color: #00aaff; /* Azul vibrante para acentos */
-    --secondary-color: #ff8c00; /* Laranja para botões secundários (opcional) */
-    --text-color: #e0e0e0; /* Cor de texto principal */
-    --text-muted-color: #a0a0a0; /* Cor de texto secundária */
-    --border-color: #3a3f4a;
-    --shadow-color: rgba(0, 0, 0, 0.2);
+    /* Dark Theme (Padrão) */
+    --bg-color-dark: #1a1a1e;
+    --card-bg-color-dark: #252a34;
+    --text-color-dark: #e0e0e0;
+    --text-muted-color-dark: #a0a0a0;
+    --border-color-dark: #3a3f4a;
+    --shadow-color-dark: rgba(0, 0, 0, 0.2);
+
+    /* Light Theme */
+    --bg-color-light: #f4f7f9;
+    --card-bg-color-light: #ffffff;
+    --text-color-light: #212529;
+    --text-muted-color-light: #6c757d;
+    --border-color-light: #dee2e6;
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+
+    /* Cores Comuns */
+    --primary-color: #00aaff;
+    --secondary-color: #f8b96b; /* Laranja */
     --success-color: #28a745;
     --error-color: #dc3545;
 
+    /* Fonte */
     --font-family: 'Poppins', sans-serif;
+
+    /* Variáveis Dinâmicas - Valor inicial é Dark */
+    --bg-color: var(--bg-color-dark);
+    --card-bg-color: var(--card-bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --text-muted-color: var(--text-muted-color-dark);
+    --border-color: var(--border-color-dark);
+    --shadow-color: var(--shadow-color-dark);
 }
 
 * {
@@ -21,7 +41,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Habilita rolagem suave nativa */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,7 +49,21 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
-    font-size: 16px; /* Base font size */
+    font-size: 16px;
+    background-image: radial-gradient(rgb(31, 34, 37) 3px, transparent 0.5px);
+    background-size: 10px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    --bg-color: var(--bg-color-light);
+    --card-bg-color: var(--card-bg-color-light);
+    --text-color: var(--text-color-light);
+    --text-muted-color: var(--text-muted-color-light);
+    --border-color: var(--border-color-light);
+    --shadow-color: var(--shadow-color-light);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 3px, transparent 0.5px);
+    background-size: 10px 10px;
 }
 
 .container {
@@ -40,16 +74,21 @@ body {
 
 /* --- Navbar --- */
 .navbar {
-    background-color: rgba(26, 29, 36, 0.85); /* Fundo com leve transparência */
-    backdrop-filter: blur(10px); /* Efeito de desfoque */
+    background-color: var(--bg-color);
+    opacity: 0.95;
+    backdrop-filter: blur(10px);
     padding: 15px 0;
-    position: fixed; /* Barra fixa */
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px var(--shadow-color);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+body.light-mode .navbar {
+    background-color: rgba(244, 247, 249, 0.85);
+    opacity: 1;
 }
 
 .nav-container {
@@ -65,35 +104,35 @@ body {
     text-decoration: none;
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .social-links a {
     color: var(--text-muted-color);
     font-size: 1.4em;
-    margin-left: 20px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .social-links a:hover {
     color: var(--primary-color);
 }
 
 /* --- Hero Section --- */
 #hero {
-    padding-top: 120px; /* Espaço para navbar fixa */
+    padding-top: 120px;
     padding-bottom: 60px;
     text-align: center;
-    background: linear-gradient(rgba(26, 29, 36, 0.8), rgba(26, 29, 36, 1)), url('https://via.placeholder.com/1500x800/1a1d24/cccccc?text=Background+Image+Placeholder') no-repeat center center/cover; /* Exemplo com gradiente e imagem de fundo */
-    /* Se não quiser imagem: background-color: var(--bg-color); */
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .hero-container {
     max-width: 800px;
 }
-
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -101,40 +140,37 @@ body {
     border: 5px solid var(--primary-color);
     object-fit: cover;
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--primary-color) 30%, transparent);
     transition: transform 0.3s ease;
 }
-
 .profile-pic:hover {
-    transform: scale(1.05);
+    transform: scale(1.35);
 }
-
 .hero-title {
     font-size: 2.8em;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #fff; /* Título mais destacado */
+    color: var(--text-color);
 }
-
+body.light-mode .hero-title {
+    color: var(--text-color-light);
+}
 .hero-subtitle {
     font-size: 1.6em;
     font-weight: 400;
     color: var(--primary-color);
     margin-bottom: 20px;
-    min-height: 1.6em; /* Evita pulo durante digitação */
+    min-height: 1.6em;
 }
-
-#typing-effect::after { /* Cursor piscando */
+#typing-effect::after {
     content: '|';
     animation: blink 1s step-end infinite;
     color: var(--primary-color);
 }
-
 @keyframes blink {
     from, to { opacity: 1 }
     50% { opacity: 0 }
 }
-
 .hero-description {
     font-size: 1.1em;
     color: var(--text-muted-color);
@@ -148,43 +184,38 @@ body {
 .skills-tags {
     margin-bottom: 30px;
 }
-
 .skill-tag {
     display: inline-block;
     background-color: var(--card-bg-color);
     color: var(--text-muted-color);
     padding: 8px 15px;
     margin: 5px;
-    border-radius: 20px; /* Mais arredondado */
+    border-radius: 20px;
     font-size: 0.9em;
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
 }
-
 .skill-tag i {
     margin-right: 6px;
-    color: var(--primary-color); /* Ícone colorido */
+    color: var(--primary-color);
 }
-
 .skill-tag:hover {
     background-color: var(--primary-color);
-    color: var(--bg-color); /* Texto escuro no hover */
+    color: #fff;
     border-color: var(--primary-color);
     transform: translateY(-2px);
 }
 .skill-tag:hover i {
-    color: var(--bg-color);
+    color: #fff;
 }
-
 
 /* CTA Buttons */
 .cta-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap; /* Quebra linha em telas pequenas */
+    flex-wrap: wrap;
 }
-
 .btn {
     padding: 12px 25px;
     border: none;
@@ -194,28 +225,24 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-flex; /* Alinha ícone e texto */
+    display: inline-flex;
     align-items: center;
-    gap: 8px; /* Espaço entre ícone e texto */
+    gap: 8px;
 }
-
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
 }
-
 .btn-primary:hover {
-    background-color: #0088cc; /* Tom mais escuro do azul */
+    background-color: #0088cc;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 170, 255, 0.3);
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--primary-color) 30%, transparent);
 }
-
 .btn-outline {
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
-
 .btn-outline:hover {
     background-color: var(--primary-color);
     color: #fff;
@@ -227,7 +254,6 @@ main.container {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-
 .content-section {
     margin-bottom: 60px;
     padding: 40px 0;
@@ -236,60 +262,53 @@ main.container {
 .content-section:last-child {
     border-bottom: none;
 }
-
 .content-section h2 {
     font-size: 2em;
     color: var(--primary-color);
     margin-bottom: 30px;
-    text-align: center; /* Centraliza títulos de seção */
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-/* Cards (Experiência, Formação, Projetos) */
+/* Cards */
 .card {
     background-color: var(--card-bg-color);
     padding: 25px;
     border-radius: 8px;
     margin-bottom: 20px;
     box-shadow: 0 4px 15px var(--shadow-color);
-    border-left: 4px solid var(--primary-color); /* Detalhe lateral */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
-
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 170, 255, 0.15);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--primary-color) 15%, transparent);
 }
-
 .card h3 {
     font-size: 1.3em;
     color: var(--text-color);
     margin-bottom: 5px;
 }
-
 .card-subtitle {
     font-size: 0.95em;
     color: var(--text-muted-color);
     margin-bottom: 15px;
     font-style: italic;
 }
-
 .card ul {
     list-style: none;
     padding-left: 0;
 }
-
 .card ul li {
     margin-bottom: 8px;
     position: relative;
     padding-left: 20px;
 }
-
 .card ul li::before {
-    content: '\f058'; /* Ícone de check do Font Awesome */
+    content: '\f058';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     color: var(--primary-color);
@@ -298,33 +317,45 @@ main.container {
     top: 2px;
 }
 
+/* --- ESTILOS ESPECÍFICOS PARA SEÇÃO OBJETIVOS --- */
+#objetivos h2 {
+    color: var(--secondary-color);
+}
+.objective-card {
+    border-left-color: var(--secondary-color);
+}
+.objective-card p {
+    font-style: italic;
+    color: var(--text-color); /* Mantém cor padrão do tema */
+}
+.objective-card:hover {
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--secondary-color) 25%, transparent);
+}
+/* --- FIM DOS ESTILOS ESPECÍFICOS --- */
+
 /* Projetos */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
 }
-
 .project-card {
     display: flex;
-    flex-direction: column; /* Garante que os links fiquem no final */
+    flex-direction: column;
 }
-
 .project-tech {
     font-size: 0.9em;
     color: var(--text-muted-color);
     margin-bottom: 10px;
     font-weight: bold;
 }
-
 .project-links {
-    margin-top: auto; /* Empurra para o final do card */
+    margin-top: auto;
     padding-top: 15px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
 }
-
 .project-link {
     color: var(--primary-color);
     text-decoration: none;
@@ -334,142 +365,147 @@ main.container {
     gap: 5px;
     transition: color 0.3s ease;
 }
-
 .project-link:hover {
-    color: #fff;
+    color: color-mix(in srgb, var(--primary-color) 80%, black);
     text-decoration: underline;
+}
+body.light-mode .project-link:hover {
+    color: #0056b3;
 }
 
 /* Certificações e Idiomas */
+.lang-level {
+    font-size: 0.85em;
+    color: var(--text-muted-color);
+    margin-left: 5px;
+    white-space: nowrap;
+}
 .cert-list, .lang-list {
     list-style: none;
     padding-left: 0;
-    max-width: 800px; /* Pode ajustar a largura máxima se necessário */
-    margin: 0 auto; /* Centraliza a lista */
+    max-width: 800px;
+    margin: 0 auto;
 }
-
 .cert-list li, .lang-list li {
     background-color: var(--card-bg-color);
+    color: var(--text-color);
     padding: 10px 15px;
     margin-bottom: 10px;
     border-radius: 5px;
     border-left: 3px solid var(--primary-color);
+    transition: background-color 0.3s ease;
 }
-
 .cert-item {
-    background-color: var(--card-bg-color);
-    padding: 15px 20px; /* Ajuste o padding se necessário */
+    padding: 15px 20px;
     margin-bottom: 12px;
     border-radius: 6px;
-    border-left: 3px solid var(--primary-color);
-    display: flex; /* Habilita flexbox */
-    justify-content: space-between; /* Alinha texto à esquerda e botão à direita */
-    align-items: center; /* Centraliza verticalmente */
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
-    gap: 10px; /* Espaço entre o texto e o botão caso quebre linha */
-}
-
-.cert-text {
-    flex-grow: 1; /* Faz o texto ocupar o espaço disponível */
-    margin-right: 15px; /* Espaço entre o texto e o botão */
-    color: var(--text-color); /* Garante a cor do texto */
-}
-
-.cert-text strong {
-    color: var(--text-color); /* Garante a cor do negrito */
-}
-
-.cert-details {
-    font-size: 0.85em;
-    color: var(--text-muted-color);
-    margin-left: 5px;
-    white-space: nowrap; /* Evita quebra de linha nos detalhes */
-}
-
-.cert-details {
-    font-size: 0.85em;
-    color: var(--text-muted-color);
-    margin-left: 5px;
-}
-
-.cert-link-btn {
-    display: inline-flex; /* Alinha ícone e texto */
+    display: flex;
     align-items: center;
-    gap: 6px; /* Espaço entre ícone e texto */
-    padding: 6px 12px; /* Botão menor */
-    background-color: transparent; /* Fundo transparente */
-    color: var(--primary-color); /* Cor do texto igual à cor primária */
-    border: 1px solid var(--primary-color); /* Borda na cor primária */
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.85em; /* Tamanho de fonte menor */
-    font-weight: 500;
-    white-space: nowrap; /* Impede que o texto do botão quebre linha */
-    transition: all 0.3s ease;
-    flex-shrink: 0; /* Impede que o botão encolha */
+    flex-wrap: wrap;
+    gap: 15px;
 }
-
+.cert-text {
+    flex-grow: 1;
+    margin-right: 10px;
+    color: var(--text-color);
+}
+.cert-text strong {
+    color: var(--text-color);
+}
+.cert-details {
+    font-size: 0.85em;
+    color: var(--text-muted-color);
+    margin-left: 5px;
+    white-space: nowrap;
+}
+.cert-buttons-group {
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+}
+.cert-link-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background-color: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; text-decoration: none; font-size: 0.85em; font-weight: 500; white-space: nowrap; transition: all 0.3s ease; flex-shrink: 0;
+}
 .cert-link-btn i {
-    font-size: 0.9em; /* Tamanho do ícone ligeiramente menor */
+    font-size: 0.9em;
 }
-
 .cert-link-btn:hover {
-    background-color: var(--primary-color); /* Fundo primário no hover */
-    color: var(--bg-color); /* Texto escuro no hover */
-    border-color: var(--primary-color);
-    transform: translateY(-1px); /* Leve efeito de elevação */
-    box-shadow: 0 2px 5px rgba(0, 170, 255, 0.2);
+    background-color: var(--primary-color); color: #fff; border-color: var(--primary-color); transform: translateY(-1px); box-shadow: 0 2px 5px color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+.cert-badge-img {
+    height: 40px; width: auto; margin-left: auto; display: block; flex-shrink: 0; object-fit: contain;
 }
 
 /* --- Footer --- */
 .footer {
-    background-color: var(--card-bg-color); /* Footer com fundo diferente */
-    color: var(--text-muted-color);
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 40px;
+    background-color: var(--card-bg-color); color: var(--text-muted-color); text-align: center; padding: 25px 0; margin-top: 40px; transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .footer .fas.fa-heart {
-    color: var(--error-color);
-    margin: 0 3px;
+    color: var(--error-color); margin: 0 3px;
 }
 .footer .fas.fa-code {
-    color: var(--primary-color);
-    margin: 0 3px;
+    color: var(--primary-color); margin: 0 3px;
 }
 
-/* --- Botão Voltar ao Topo --- */
-#scrollToTopBtn {
-    display: none; /* Oculto por padrão */
+/* --- Botões Flutuantes (Alternativa 1: Outline Quadrado Arredondado) --- */
+#scrollToTopBtn,
+#theme-toggle-btn {
+    display: block; /* Ou 'none' inicial para scrollToTop */
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    border: none;
+    z-index: 999; /* ou 998 para theme */
+    border: 2px solid var(--primary-color); /* Borda em vez de fundo */
     outline: none;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: transparent; /* Fundo transparente */
+    color: var(--primary-color); /* Ícone na cor primária */
     cursor: pointer;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 18px;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    padding: 12px; /* Padding ajustado */
+    border-radius: 10px; /* Cantos arredondados */
+    font-size: 18px; /* Tamanho base do ícone */
+    box-shadow: 0 2px 8px var(--shadow-color); /* Sombra sutil */
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, box-shadow 0.3s ease;
+    line-height: 1;
+}
+/* Ocultar botão de scroll inicialmente */
+#scrollToTopBtn {
+    display: none;
+    top: 90px; /* Posição a partir do topo (Desktop) */
+    right: 30px;
+}
+#theme-toggle-btn {
+    /* display: block; - já definido acima */
+    bottom: 30px; /* Posição a partir de baixo (Desktop) */
+    left: 30px;
+    z-index: 998; /* Abaixo do scroll to top */
 }
 
-#scrollToTopBtn:hover {
-    background-color: #0088cc; /* Tom mais escuro no hover */
+/* Hover preenche o fundo */
+#scrollToTopBtn:hover,
+#theme-toggle-btn:hover {
+    background-color: var(--primary-color); /* Preenche no hover */
+    color: white; /* Ícone branco no hover */
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 20%, transparent);
 }
 
+/* Controla visibilidade dos ícones sol/lua no botão de tema */
+#theme-toggle-btn .theme-icon-moon {
+    display: none;
+}
+body.light-mode #theme-toggle-btn .theme-icon-sun {
+    display: none;
+}
+body.light-mode #theme-toggle-btn .theme-icon-moon {
+    display: inline-block;
+}
+
+
+/* --- Textos Específicos --- */
 #sobre p {
-    text-align: justify;
-    /* -webkit-hyphens: auto; */
-    /* -moz-hyphens: auto;    */
-    /* -ms-hyphens: auto;     */
-    /* hyphens: auto;         */
-    /* Ou alternativamente: */
-    hyphens: none; /* Desativa explicitamente a hifenização */
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* --- Animações de Scroll --- */
@@ -478,133 +514,83 @@ main.container {
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-
 /* --- Responsividade --- */
 @media (max-width: 992px) {
-    .hero-title {
-        font-size: 2.4em;
-    }
-    .hero-subtitle {
-        font-size: 1.4em;
-    }
+    .hero-title { font-size: 2.4em; }
+    .hero-subtitle { font-size: 1.4em; }
 }
 
 @media (max-width: 768px) {
-    body {
-        font-size: 15px;
-        /* Removido o padding-bottom: 80px; */
-    }
-    .container {
-        padding: 0 15px;
-    }
-    .nav-container {
-        padding: 0 15px; /* Garante padding no mobile tb */
-    }
-    .hero-title {
-        font-size: 2em;
-    }
-    .hero-subtitle {
-        font-size: 1.4em;
-        min-height: 3.5em;
-    }
-    .hero-description {
-        font-size: 1em;
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-    .content-section h2 {
-        font-size: 1.8em;
-    }
-    .project-grid {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    body { font-size: 15px; }
+    .container { padding: 0 15px; }
+    .nav-container { padding: 0 15px; }
+    .hero-title { font-size: 2em; }
+    .hero-subtitle { font-size: 1.4em; min-height: 3.5em; }
+    .hero-description { font-size: 1em; }
+    .profile-pic { width: 120px; height: 120px; }
+    .content-section h2 { font-size: 1.8em; }
+    .project-grid { grid-template-columns: 1fr; }
+
+    /* Ajustes botões flutuantes */
+    #scrollToTopBtn,
+    #theme-toggle-btn {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px; /* Menor arredondamento */
     }
     #scrollToTopBtn {
-        bottom: 85px;   /* Botão mais para cima */
+        top: 80px; /* Posição Topo Mobile */
         right: 20px;
-        padding: 12px;
-        font-size: 16px;
     }
-    /* Adicionar ajuste de fonte do footer aqui se necessário também */
-    /* .footer p {
-        font-size: 0.9em;
-    } */
+    #theme-toggle-btn {
+        bottom: 85px; /* Posição Bottom Mobile */
+        left: 20px;
+    }
+
+    .footer p { /* font-size: 0.9em; */ }
 }
 
-/* Combinado e corrigido para 480px */
 @media (max-width: 480px) {
-    .navbar {
-        padding: 10px 0;
-    }
-    .nav-logo {
-        font-size: 1.3em;
-    }
-    .social-links a {
-        font-size: 1.2em;
-        margin-left: 15px;
-    }
-    #hero {
-        padding-top: 100px;
-        padding-bottom: 40px;
-    }
-    .hero-title {
-        font-size: 1.8em;
-    }
-    .hero-subtitle {
-        font-size: 1.1em;
-        min-height: 3.5em;
-    }
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-    .cta-buttons {
-        flex-direction: column; /* Empilha botões */
-        align-items: center; /* Centraliza botões empilhados */
-    }
-    .btn {
-        width: 80%; /* Faz botões ocuparem mais largura */
-        justify-content: center; /* Centraliza texto/ícone */
-    }
-    .content-section h2 {
-        font-size: 1.6em;
-    }
-    .card {
-        padding: 20px;
-    }
+    .navbar { padding: 10px 0; }
+    .nav-logo { font-size: 1.3em; }
+    .nav-controls { gap: 10px; }
+    .social-links a { font-size: 1.2em; }
 
-    /* Estilos para certificados em 480px */
-    .cert-item {
-        flex-direction: column; /* Mantém texto e grupo de botões empilhados */
-        align-items: flex-start; /* Mantém alinhamento à esquerda */
-    }
-    .cert-text {
-        margin-right: 0;
-        margin-bottom: 12px; /* Espaço abaixo do texto */
-    }
-    .cert-buttons-group {
-        display: flex; /* Faz os botões ficarem em linha */
-        flex-wrap: wrap; /* Permite que quebrem para a linha de baixo se não couberem */
-        gap: 8px; /* Espaço entre os botões */
-        width: 100%; /* Faz o grupo ocupar a largura para o wrap funcionar bem */
-    }
+    #hero { padding-top: 100px; padding-bottom: 40px; }
+    .hero-title { font-size: 1.8em; }
+    .hero-subtitle { font-size: 1.1em; min-height: 3.5em; }
+    .profile-pic { width: 100px; height: 100px; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 80%; justify-content: center; }
+    .content-section h2 { font-size: 1.6em; }
+    .card { padding: 20px; }
 
-    /* Estilo para o botão 'Voltar ao Topo' em 480px */
+    /* Certificados Mobile */
+    .cert-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .cert-text { margin-right: 0; margin-bottom: 0; width: 100%; }
+    .cert-buttons-group { width: 100%; }
+    .cert-badge-img { margin-left: 0; align-self: flex-start; height: 35px; margin-top: 5px; }
+
+    /* Botões Flutuantes Mobile Menor */
+    #scrollToTopBtn,
+    #theme-toggle-btn {
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 6px; /* Menor arredondamento */
+    }
     #scrollToTopBtn {
-        bottom: 80px;   /* Botão mais para cima */
-        /* Adicione 'right' se ele não estiver definido globalmente ou na media query de 768px */
-        /* right: 15px; */ /* Exemplo */
+        top: 75px; /* Posição Topo Mobile Menor */
+        right: 15px;
+    }
+    #theme-toggle-btn {
+        bottom: 80px; /* Posição Bottom Mobile Menor */
+        left: 15px;
     }
 
-    /* <<< ADICIONADO: Reduzir fonte do rodapé para evitar quebra de linha */
-    .footer p {
-        font-size: 0.85em; /* Ajuste fino se necessário (ex: 13px, 0.9em) */
-    }
+    .footer p { font-size: 0.85em; }
 }

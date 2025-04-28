@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollLinks = document.querySelectorAll('.scroll-link');
     const animatedSections = document.querySelectorAll('.animate-on-scroll');
     const currentYearElement = document.getElementById('currentYear');
-    const profilePic = document.getElementById('profilePic'); // Mantido, embora o efeito esteja comentado
+    const profilePic = document.getElementById('profilePic'); // Mantido, para o futuro
     const themeToggleButton = document.getElementById('theme-toggle-btn');
     const progressBar = document.getElementById('scroll-progress-bar');
     const bodyElement = document.body;

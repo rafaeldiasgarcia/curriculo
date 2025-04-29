@@ -163,27 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
-
-    // =============================================
-    // --- Efeito sutil na foto de perfil ao rolar (FUNCIONALIDADE COMENTADA) ---
-    // =============================================
-    /*
-    let lastScrollTop = 0;
-    function handleProfilePicScrollEffect() {
-        if (!profilePic) return; // Sai se a imagem não existir
-        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScroll > lastScrollTop && currentScroll > 50) {
-            // Rolando para baixo - poderia diminuir um pouco
-            // profilePic.style.transform = 'scale(0.95)';
-        } else {
-            // Rolando para cima ou no topo - volta ao normal
-            // profilePic.style.transform = 'scale(1)';
-        }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para lidar com rolagem negativa em alguns browsers/dispositivos
-    }
-    */
-
-
     // =============================================
     // --- Toggle Light/Dark Mode ---
     // =============================================

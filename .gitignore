@@ -1,2 +1,4 @@
 # Configurações de IDEs JetBrains -
 .idea/
+
+.gitignore

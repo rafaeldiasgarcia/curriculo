@@ -7,7 +7,6 @@
   <meta name="description" content="Portfólio de Rafael Dias Garcia, estudante de Engenharia de Software com foco em backend (Node.js, Express), arquitetura e bancos de dados. Veja meus projetos e experiências.">
   <title>Rafael Dias Garcia - Curriculum Vitae</title>
   <link rel="icon" href="src/assets/img/favicon.svg" type="image/svg+xml">
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="src/assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,6 +27,7 @@
 <div id="scroll-progress-container">
   <div id="scroll-progress-bar"></div>
 </div>
+
 <nav class="navbar">
   <div class="container nav-container">
     <a href="index.html" class="nav-logo">R D G</a>
@@ -152,14 +152,10 @@
     <h2><i class="fas fa-laptop-code"></i> Projetos</h2>
     <p class="carousel-instruction">Arraste os cards para navegar</p>
 
-    <!-- Swiper -->
     <div class="swiper-container project-swiper">
       <div class="swiper-wrapper">
-        <!-- Slide 1: WeatherNow -->
         <div class="swiper-slide">
           <div class="card project-card">
-            <!-- Opcional: Adicionar imagem aqui como na referência -->
-            <!-- <img src="src/assets/img/project-weather.jpg" alt="WeatherNow Preview" class="project-slide-image"> -->
             <h3>WeatherNow 🌤️ - Dashboard Interativo de Clima</h3>
             <p class="project-tech"><strong>[HTML, CSS, Vanilla JS, OpenWeatherMap API]</strong></p>
             <p>Dashboard responsivo que consome a API OpenWeatherMap. Funcionalidades: busca por cidade, relógio, troca de
@@ -170,10 +166,8 @@
             </div>
           </div>
         </div>
-        <!-- Slide 2: Portfólio Pessoal -->
         <div class="swiper-slide">
           <div class="card project-card">
-            <!-- <img src="src/assets/img/project-portfolio.jpg" alt="Portfólio Preview" class="project-slide-image"> -->
             <h3>Portfólio Pessoal - Rafael Dias Garcia</h3>
             <p class="project-tech"><strong>[HTML5, CSS3, Vanilla JavaScript, Font Awesome, Formspree]</strong></p>
             <p>Portfólio pessoal desenvolvido como vitrine de habilidades, experiências e projetos como estudante de Engenharia
@@ -183,11 +177,9 @@
             </div>
           </div>
         </div>
-        <!-- Slide 3: BookshelfAPI -->
         <div class="swiper-slide">
           <div class="card project-card">
-            <!-- <img src="src/assets/img/project-bookshelf.jpg" alt="Bookshelf API Preview" class="project-slide-image"> -->
-            <h3>BookshelfAPI 📚 - Beckend</h3>
+            <h3>BookshelfAPI 📚 - Backend</h3>
             <p class="project-tech"><strong>[Node.js, Express.js, UUID, JSON]</strong></p>
             <p>Uma API REST simples com Node.js e Express para gerenciar uma coleção de livros, usando um arquivo JSON local
               para persistência. Ideal para aprendizado e portfólio.</p>
@@ -196,10 +188,8 @@
             </div>
           </div>
         </div>
-        <!-- Slide 4: CS50x -->
         <div class="swiper-slide">
           <div class="card project-card">
-            <!-- <img src="src/assets/img/project-cs50.jpg" alt="CS50x Projects Preview" class="project-slide-image"> -->
             <h3>🧠 CS50x: Problem Sets & Final Project</h3>
             <p class="project-tech"><strong>[C, Python, Scratch, SQL, HTML, CSS, JavaScript, Flask]</strong></p>
             <p>Repositório com minhas soluções do CS50x – Introduction to Computer Science (Harvard). Abrange fundamentos
@@ -209,11 +199,20 @@
             </div>
           </div>
         </div>
+        <div class="swiper-slide">
+          <div class="card project-card">
+            <h3>Termo Clone (Pset10 - CS50x)</h3>
+            <p class="project-tech"><strong>[Python, Flask, HTML, CSS, JavaScript]</strong></p>
+            <p>Recriação em português do popular jogo de adivinhar palavras "Termo" (Wordle), como projeto final do curso
+              CS50x de Harvard. O jogador tem seis tentativas para adivinhar uma palavra secreta de cinco letras, com feedback visual a cada palpite.</p>
+            <div class="project-links">
+              <a href=https://termo-clone.onrender.com/ target="_blank" class="project-link"><i class="fas fa-rocket"></i> Teste agora!</a>
+              <a href="https://github.com/rafaeldiasgarcia/termo-clone" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
-
-      <!-- Add Navigation -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -223,62 +222,102 @@
     <h2><i class="fas fa-certificate"></i> Certificações</h2>
     <ul class="cert-list">
       <li class="cert-item">
-                    <span class="cert-text">
-                        <strong>Harvard University:</strong> Ciência da Computação <span class="cert-details">(CS50x: 150h)</span>
-                    </span>
-        <div class="cert-buttons-group">
-          <a href="src/assets/pdf/certificates/CS50x.pdf" download class="cert-link-btn" title="Baixar Certificado CS50x (PDF)">
-            <i class="fas fa-download"></i>
-          </a>
-          <a href="https://certificates.cs50.io/3ec00f83-94ab-4dc7-bfb2-6f5a4646b76a.pdf?size=letter" target="_blank" class="cert-link-btn" title="Ver Credencial CS50x">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="cert-text-wrapper">
+            <span class="cert-text">
+              <strong>Harvard University:</strong> Ciência da Computação <span class="cert-details">(CS50x: 150h)</span>
+            </span>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+            <i class="fas fa-ellipsis-h"></i>
+            <span class="sr-only">Ações</span>
+          </button>
+          <div class="cert-dropdown-menu">
+            <a href="src/assets/pdf/certificates/CS50x.pdf" download class="cert-dropdown-link">
+              <i class="fas fa-download"></i> Baixar PDF
+            </a>
+            <a href="https://certificates.cs50.io/3ec00f83-94ab-4dc7-bfb2-6f5a4646b76a.pdf?size=letter" target="_blank" class="cert-dropdown-link">
+              <i class="fas fa-external-link-alt"></i> Ver Credencial
+            </a>
+          </div>
         </div>
       </li>
       <li class="cert-item">
-                    <span class="cert-text">
-                        <strong>Cisco:</strong> JavaScript Essentials 1 <span class="cert-details">(JavaScript: 40h)</span>
-                    </span>
-        <div class="cert-buttons-group">
-          <a href="src/assets/pdf/certificates/cisco-unifio-js.pdf" download class="cert-link-btn" title="Baixar Certificado Cisco (PDF)">
-            <i class="fas fa-download"></i>
-          </a>
-          <a href="src/assets/pdf/certificates/cisco-js-badge.pdf" download class="cert-link-btn" title="Baixar Badge Cisco (PDF)">
-            <i class="fas fa-download"></i>
-          </a>
-          <a href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/linked_in_profile" target="_blank" class="cert-link-btn" title="Ver Credencial Cisco">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="cert-text-wrapper">
+            <span class="cert-text">
+              <strong>Cisco:</strong> JavaScript Essentials 1 <span class="cert-details">(JavaScript: 40h)</span>
+            </span>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+            <i class="fas fa-ellipsis-h"></i>
+            <span class="sr-only">Ações</span>
+          </button>
+          <div class="cert-dropdown-menu">
+            <a href="src/assets/pdf/certificates/cisco-unifio-js.pdf" download class="cert-dropdown-link">
+              <i class="fas fa-download"></i> Baixar Certificado
+            </a>
+            <a href="src/assets/pdf/certificates/cisco-js-badge.pdf" download class="cert-dropdown-link">
+              <i class="fas fa-download"></i> Baixar Badge
+            </a>
+            <a href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/linked_in_profile" target="_blank" class="cert-dropdown-link">
+              <i class="fas fa-external-link-alt"></i> Ver Credencial Online
+            </a>
+          </div>
         </div>
       </li>
       <li class="cert-item">
-                    <span class="cert-text">
-                        <strong>Huawei Talent Online:</strong> Python Advanced Module <span class="cert-details">(Python: 32h)</span>
-                    </span>
-        <div class="cert-buttons-group">
-          <a href="src/assets/pdf/certificates/huawei-talent-online.pdf" download class="cert-link-btn" title="Baixar Certificado Huawei (PDF)">
-            <i class="fas fa-download"></i>
-          </a>
+        <div class="cert-text-wrapper">
+            <span class="cert-text">
+              <strong>Huawei Talent Online:</strong> Python Advanced Module <span class="cert-details">(Python: 32h)</span>
+            </span>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+            <i class="fas fa-ellipsis-h"></i>
+            <span class="sr-only">Ações</span>
+          </button>
+          <div class="cert-dropdown-menu">
+            <a href="src/assets/pdf/certificates/huawei-talent-online.pdf" download class="cert-dropdown-link">
+              <i class="fas fa-download"></i> Baixar PDF
+            </a>
+          </div>
         </div>
       </li>
       <li class="cert-item">
-                    <span class="cert-text">
-                        <strong>Alura:</strong> JavaScript for Backend <span class="cert-details">(Node.js: 44h)</span>
-                    </span>
-        <div class="cert-buttons-group">
-          <a href="https://cursos.alura.com.br/degree/certificate/9c14158a-105c-4c18-bb40-c80ccd19dcf3?lang" target="_blank" class="cert-link-btn" title="Ver Certificado Alura Backend">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="cert-text-wrapper">
+            <span class="cert-text">
+              <strong>Alura:</strong> JavaScript for Backend <span class="cert-details">(Node.js: 44h)</span>
+            </span>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+            <i class="fas fa-ellipsis-h"></i>
+            <span class="sr-only">Ações</span>
+          </button>
+          <div class="cert-dropdown-menu">
+            <a href="https://cursos.alura.com.br/degree/certificate/9c14158a-105c-4c18-bb40-c80ccd19dcf3?lang" target="_blank" class="cert-dropdown-link">
+              <i class="fas fa-external-link-alt"></i> Ver Certificado
+            </a>
+          </div>
         </div>
       </li>
       <li class="cert-item">
-                    <span class="cert-text">
-                        <strong>Alura:</strong> From Scratch: HTML and CSS for Web Projects <span class="cert-details">(JS/CSS/HTML: 44h)</span>
-                    </span>
-        <div class="cert-buttons-group">
-          <a href="https://cursos.alura.com.br/degree/certificate/93b0bb99-02cc-462d-adda-73ba08a93c4f?lang=en" target="_blank" class="cert-link-btn" title="Ver Certificado Alura Frontend">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="cert-text-wrapper">
+            <span class="cert-text">
+              <strong>Alura:</strong> From Scratch: HTML and CSS for Web Projects <span class="cert-details">(JS/CSS/HTML: 44h)</span>
+            </span>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+            <i class="fas fa-ellipsis-h"></i>
+            <span class="sr-only">Ações</span>
+          </button>
+          <div class="cert-dropdown-menu">
+            <a href="https://cursos.alura.com.br/degree/certificate/93b0bb99-02cc-462d-adda-73ba08a93c4f?lang=en" target="_blank" class="cert-dropdown-link">
+              <i class="fas fa-external-link-alt"></i> Ver Certificado
+            </a>
+          </div>
         </div>
       </li>
     </ul>
@@ -287,9 +326,33 @@
   <section id="idiomas" class="content-section animate-on-scroll">
     <h2><i class="fas fa-language"></i> Idiomas</h2>
     <ul class="lang-list">
-      <li><strong>Português</strong> - Nativo Fluente <span class="lang-level">(C2)</span></li>
-      <li><strong>Inglês</strong> - Intermediário Avançado <span class="lang-level">(B2)</span></li>
-      <li><strong>Latim</strong> - intermediário Baixo <span class="lang-level">(A2)</span></li>
+      <li class="lang-item">
+        <div class="lang-info">
+          <span class="lang-name"><strong>Português:</strong> Nativo Fluente</span>
+          <span class="lang-level-framework">(C2)</span>
+        </div>
+        <div class="lang-progress-container">
+          <div class="lang-progress-bar" style="width: 100%;"></div>
+        </div>
+      </li>
+      <li class="lang-item">
+        <div class="lang-info">
+          <span class="lang-name"><strong>Inglês:</strong> Intermediário Avançado</span>
+          <span class="lang-level-framework">(B2)</span>
+        </div>
+        <div class="lang-progress-container">
+          <div class="lang-progress-bar" style="width: 80%;"></div>
+        </div>
+      </li>
+      <li class="lang-item">
+        <div class="lang-info">
+          <span class="lang-name"><strong>Latim:</strong> Intermediário Baixo</span>
+          <span class="lang-level-framework">(A2)</span>
+        </div>
+        <div class="lang-progress-container">
+          <div class="lang-progress-bar" style="width: 40%;"></div>
+        </div>
+      </li>
     </ul>
   </section>
 </main>
@@ -300,7 +363,6 @@
   <i class="fas fa-moon theme-icon-moon"></i>
 </button>
 
-<!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="src/script/script.js"></script>
 
@@ -313,4 +375,5 @@
 </footer>
 
 </html>
+
 <!--Feito por Rafael Dias Garcia-->

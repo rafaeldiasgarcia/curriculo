@@ -777,6 +777,51 @@ body.light-mode .cert-dropdown-link:hover {
 
 .lang-item {
     background-color: var(--card-bg-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85px; /* Altura reduzida para ficarem mais finos */
+}
+
+.lang-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px color-mix(in srgb, var(--secondary-color) 20%, transparent);
+}
+
+/* Nova regra para garantir a centralização do texto */
+#idiomas .lang-info {
+    text-align: center;
+    width: 100%;
+}
+
+.lang-name {
+    font-size: 1.1em;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+#idiomas .lang-item .cert-actions {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+#idiomas .lang-list {
+    list-style: none;
+    padding: 15px;
+    max-width: 650px;
+    margin: 30px auto 0 auto;
+}
+
+.lang-item {
+    background-color: var(--card-bg-color);
     padding: 18px 22px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -938,7 +983,48 @@ body.light-mode #theme-toggle-btn .theme-icon-moon {
     transform: translateY(0);
 }
 
+/* NOVAS REGRAS PARA A SEÇÃO FORMAÇÃO */
+#formacao .card {
+    position: relative;
+}
+
+#formacao .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+#formacao .card-header h3 {
+    margin-bottom: 0;
+}
+
+#formacao .card-header .card-subtitle {
+    margin-bottom: 0;
+    font-style: normal;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#formacao .card-body p {
+    padding-right: 80px;
+}
+
+#formacao .card .cert-actions {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+
 @media (max-width: 767px) {
+    .lang-item {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
     .project-swiper .swiper-slide:not(.swiper-slide-active) {
         opacity: 0.85;
     }
@@ -1204,6 +1290,16 @@ body.light-mode #theme-toggle-btn .theme-icon-moon {
     }
     .footer p {
         font-size: 0.85em;
+    }
+
+    #formacao .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    #formacao .card-body p {
+        padding-right: 0;
     }
 }
 

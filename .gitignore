@@ -2,5 +2,5 @@
 .idea/
 
 # Ignorar arquivos de diploma e certificados específicos
-pdf/certificates/RAFAEL DIAS GARCIA_Diploma.xml
-pdf/certificates/uninter-licenciatura-musica.pdf
+src/assets/pdf/certificates/uninter-licenciatura-musica.pdf
+src/assets/pdf/certificates/uninter-licenciatura-musica.pdf

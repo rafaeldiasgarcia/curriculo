@@ -1,5 +1,10 @@
+/* ==========================================================================
+   Bootstrap 5 Custom Scripts - Rafael Dias Garcia Portfolio
+   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Elements
     const typingTextElement = document.getElementById('typing-effect');
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     const scrollLinks = document.querySelectorAll('.scroll-link');
@@ -9,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressBar = document.getElementById('scroll-progress-bar');
     const bodyElement = document.body;
 
+    // ==========================================================================
+    // Typing Effect
+    // ==========================================================================
+    
     const textToType = "Estudante de Engenharia de Software | Backend Dev";
     const typingSpeed = 50;
     const deletingSpeed = 30;
@@ -16,12 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const delayBeforeStart = 1700;
     let charIndex = 0;
     let isDeleting = false;
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
 
     function typeEffect() {
         if (!typingTextElement) return;
@@ -52,25 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeEffect, delayBeforeStart);
     }
 
+    // ==========================================================================
+    // Scroll to Top Button
+    // ==========================================================================
+    
     function handleScrollToTopButtonVisibility() {
         if (!scrollToTopBtn) return;
 
         const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollPosition > 100) {
-            if (scrollToTopBtn.style.display !== "block") {
-                scrollToTopBtn.style.display = "block";
-                setTimeout(() => { scrollToTopBtn.style.opacity = "1"; }, 10);
-            }
+        if (scrollPosition > 300) {
+            scrollToTopBtn.classList.add('show');
         } else {
-            if (scrollToTopBtn.style.opacity !== "0") {
-                scrollToTopBtn.style.opacity = "0";
-                setTimeout(() => {
-                    if (scrollToTopBtn.style.opacity === "0") {
-                        scrollToTopBtn.style.display = "none";
-                    }
-                }, 300);
-            }
+            scrollToTopBtn.classList.remove('show');
         }
     }
 
@@ -80,6 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==========================================================================
+    // Smooth Scroll for Links
+    // ==========================================================================
+    
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -95,6 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ==========================================================================
+    // Intersection Observer for Animations
+    // ==========================================================================
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -108,10 +119,18 @@ document.addEventListener('DOMContentLoaded', function() {
         animatedSections.forEach(section => observer.observe(section));
     }
 
+    // ==========================================================================
+    // Current Year in Footer
+    // ==========================================================================
+    
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
+    // ==========================================================================
+    // Theme Toggle (Light/Dark Mode)
+    // ==========================================================================
+    
     const savedTheme = localStorage.getItem('theme');
 
     function applyTheme(theme) {
@@ -135,6 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==========================================================================
+    // Progress Bar
+    // ==========================================================================
+    
     function updateProgressBar() {
         if (!progressBar) return;
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -142,6 +165,10 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.transform = `scaleX(${scrollHeight <= 0 ? 0 : scrollTop / scrollHeight})`;
     }
 
+    // ==========================================================================
+    // Main Scroll Handler
+    // ==========================================================================
+    
     function handleScroll() {
         handleScrollToTopButtonVisibility();
         updateProgressBar();
@@ -151,140 +178,42 @@ document.addEventListener('DOMContentLoaded', function() {
     handleScrollToTopButtonVisibility();
     updateProgressBar();
 
-    if (document.querySelector('.project-swiper')) {
-        const projectSwiper = new Swiper('.project-swiper', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            watchSlidesProgress: true,
-            coverflowEffect: {
-                rotate: 30,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: false,
-            },
-            a11y: {
-                prevSlideMessage: 'Projeto anterior',
-                nextSlideMessage: 'Próximo projeto',
-                paginationBulletMessage: 'Ir para o projeto {{index}}',
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1.15,
-                    spaceBetween: 10,
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 60,
-                        modifier: 1.5,
-                        slideShadows: false,
-                    },
-                },
-                400: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 15,
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 70,
-                        modifier: 1.15,
-                        slideShadows: false,
-                    },
-                },
-                768: {
-                    slidesPerView: 'auto',
-                    spaceBetween: 20,
-                    coverflowEffect: {
-                        rotate: 20,
-                        stretch: 0,
-                        depth: 80,
-                        modifier: 1,
-                        slideShadows: true,
-                    },
-                },
-                1024: {
-                    slidesPerView: 'auto',
-                    spaceBetween: 30,
-                    coverflowEffect: {
-                        rotate: 30,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows: true,
-                    },
-                }
-            },
-            on: {
-                init: function() { this.update(); },
-                resize: function() { this.update(); },
-            }
-        });
-    }
-
-    const dropdownToggles = document.querySelectorAll('.cert-action-dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            const dropdownMenu = this.nextElementSibling;
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-            closeAllDropdowns(this);
-
-            if (isExpanded) {
-                dropdownMenu.classList.remove('is-active');
-                this.setAttribute('aria-expanded', 'false');
-                this.classList.remove('is-active');
-            } else {
-                dropdownMenu.classList.add('is-active');
-                this.setAttribute('aria-expanded', 'true');
-                this.classList.add('is-active');
+    // Close navbar on mobile after clicking a link
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
             }
         });
     });
 
-    function closeAllDropdowns(exceptThisToggle) {
-        dropdownToggles.forEach(toggle => {
-            if (toggle !== exceptThisToggle) {
-                const menu = toggle.nextElementSibling;
-                if (menu && menu.classList.contains('cert-dropdown-menu')) {
-                    menu.classList.remove('is-active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                    toggle.classList.remove('is-active');
-                }
-            }
+    // ==========================================================================
+    // Form Status Handler (Contact Page)
+    // ==========================================================================
+    
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    
+    if (contactForm && formStatus) {
+        contactForm.addEventListener('submit', function(e) {
+            // Formspree handles the submission, but we can show a loading state
+            formStatus.innerHTML = '<div class="alert alert-info">Enviando mensagem...</div>';
         });
     }
 
-    document.addEventListener('click', function(event) {
-        dropdownToggles.forEach(toggle => {
-            const dropdownMenu = toggle.nextElementSibling;
-            if (dropdownMenu && dropdownMenu.classList.contains('is-active') &&
-                !toggle.contains(event.target) &&
-                !dropdownMenu.contains(event.target)) {
-
-                dropdownMenu.classList.remove('is-active');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.classList.remove('is-active');
-            }
-        });
-    });
-
-    console.log("Portfólio Interativo Carregado. Swiper e Dropdowns de Certificados inicializados.");
+    // ==========================================================================
+    // Console Log
+    // ==========================================================================
+    
+    console.log("✅ Portfólio com Bootstrap 5 carregado com sucesso!");
+    console.log("📦 Usando Bootstrap 5.3.2 (100% nativo)");
+    console.log("🎨 Tema: " + (savedTheme || 'dark'));
+    console.log("🎠 Carousel: Bootstrap Carousel nativo");
+    
 });
 
 /* Feito por Rafael Dias Garcia */

@@ -2,18 +2,41 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfólio de Rafael Dias Garcia, estudante de Engenharia de Software com foco em backend (Java, Php, Node.js, Express), arquitetura e bancos de dados. Veja meus projetos e experiências.">
     <title>Rafael Dias Garcia - Curriculum Vitae</title>
     <link rel="icon" href="src/assets/img/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="src/assets/css/style.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rafaeldiasgarcia.github.io/curriculo/">
+    <meta property="og:title" content="Rafael Dias Garcia - Desenvolvedor Backend | Engenharia de Software">
+    <meta property="og:description" content="Desenvolvedor Backend especializado em Java, Node.js e PHP. Construindo soluções escaláveis e eficientes.">
+    <meta property="og:image" content="https://rafaeldiasgarcia.github.io/curriculo/src/assets/img/print-site.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rafaeldiasgarcia.github.io/curriculo/">
+    <meta property="twitter:title" content="Rafael Dias Garcia - Desenvolvedor Backend">
+    <meta property="twitter:description" content="Desenvolvedor Backend especializado em Java, Node.js e PHP.">
+    <meta property="twitter:image" content="https://rafaeldiasgarcia.github.io/curriculo/src/assets/img/print-site.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/assets/css/style.css">
+    
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GL4MJRLT7J"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,129 +44,360 @@
         gtag('js', new Date());
         gtag('config', 'G-GL4MJRLT7J');
     </script>
-
 </head>
 
 <body>
 
+<!-- Scroll Progress Bar -->
 <div id="scroll-progress-container">
     <div id="scroll-progress-bar"></div>
 </div>
 
-<nav class="navbar">
-    <div class="container nav-container">
-        <a href="index.html" class="nav-logo">R D G</a>
-        <div class="nav-controls">
-            <div class="nav-links">
-                <a href="contato.html">Contato</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/rafaeldiasgarcia" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/rafaeldiasgarcia/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
+<!-- Navbar Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">R D G</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#sobre">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experiencia">Experiência</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projetos">Projetos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+                <li class="nav-item ms-lg-3">
+                    <a class="nav-link" href="https://github.com/rafaeldiasgarcia" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/rafaeldiasgarcia/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <button id="theme-toggle-btn" class="btn btn-outline-primary btn-sm" aria-label="Alternar tema">
+                        <i class="fas fa-sun theme-icon-sun"></i>
+                        <i class="fas fa-moon theme-icon-moon"></i>
+                    </button>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
 
-<header id="hero">
-
-    <div class="container hero-container">
-        <img src="src/assets/img/profile.png" alt="Foto de Rafael Dias Garcia" class="profile-pic" id="profilePic">
-        <h1 class="hero-title">Rafael Dias Garcia</h1>
-        <h2 class="hero-subtitle"><span id="typing-effect"></span></h2>
-        <p class="hero-description">
-            Graduando em Engenharia de Software com foco principal em desenvolvimento backend, arquitetura
-            de sistemas e bancos de dados. Buscando oportunidades para aplicar e expandir meus conhecimentos na área.
-        </p>
-        <div class="skills-tags">
-            <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" title="JavaScript"><span class="skill-tag"><i class="fab fa-js-square"></i> JavaScript</span></a>
-            <a href="https://nodejs.org/" target="_blank" title="Node.js"><span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span></a>
-            <a href="https://expressjs.com/pt-br/" target="_blank" title="Express.js"><span class="skill-tag"><i class="fas fa-server"></i> Express.js</span></a>
-            <a href="https://www.python.org/" target="_blank" title="Python"><span class="skill-tag"><i class="fab fa-python"></i> Python</span></a>
-            <a href="https://flask.palletsprojects.com/" target="_blank" title="Flask"><span class="skill-tag"><i class="fas fa-flask"></i> Flask</span></a>
-            <a href="https://www.java.com/" target="_blank" title="Java"><span class="skill-tag"><i class="fab fa-java"></i> Java</span></a>
-            <a href="https://youtu.be/1H4wla-Yhjw/" target="_blank" title="BandLab"><span class="skill-tag"><i class="fas fa-guitar"></i> Violão</span></a>
-            <a href="https://devdocs.io/c/" target="_blank" title="Linguagem C"><span class="skill-tag"><i class="fas fa-code"></i> C</span></a>
-            <a href="https://developer.mozilla.org/pt-BR/docs/Glossary/SQL" target="_blank" title="SQL"><span class="skill-tag"><i class="fas fa-database"></i> SQL</span></a>
-            <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" title="HTML5"><span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span></a>
-            <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" title="CSS3"><span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span></a>
-            <a href="https://pt.wikipedia.org/wiki/Portugol" target="_blank" title="Portugol"><span class="skill-tag"><i class="fas fa-terminal"></i> Portugol</span></a>
-            <a href="https://pt.wikipedia.org/wiki/Linguagem_de_montagem" target="_blank" title="Assembly"><span class="skill-tag"><i class="fas fa-microchip"></i> Assembly</span></a>
-            <a href="https://www.php.net/" target="_blank" title="PHP"><span class="skill-tag"><i class="fab fa-php"></i> PHP</span></a>
+<!-- Hero Section -->
+<header id="hero" class="bg-gradient py-4">
+    <div class="container text-center py-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-11">
+                <h1 class="fw-bold mb-2">Rafael Dias Garcia</h1>
+                <h2 class="text-primary mb-3">
+                    <span id="typing-effect"></span>
+                </h2>
+                <p class="mb-2">
+                    <strong>Desenvolvedor Backend</strong> | Java, Node.js e PHP
+                </p>
+                <p class="mb-3 small">
+                    Estudante de Engenharia de Software apaixonado por arquitetura de sistemas e APIs RESTful
+                    <span class="badge bg-success ms-2"><i class="fas fa-circle pulse me-1"></i>Aberto para Estágios</span>
+                </p>
+                
+                <!-- Skills Tags - Organized by Level -->
+                <div class="skills-tags mb-3">
+                    <div class="card border-0 shadow-sm mb-2 p-3">
+                        <h6 class="text-muted mb-2"><i class="fas fa-star text-warning me-1"></i>Backend & Bancos de Dados</h6>
+                        <div>
+                        <a href="https://www.java.com/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Java">
+                            <i class="fab fa-java text-primary"></i> Java
+                        </a>
+                        <a href="https://nodejs.org/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Node.js">
+                            <i class="fab fa-node-js text-primary"></i> Node.js
+                        </a>
+                        <a href="https://www.php.net/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="PHP">
+                            <i class="fab fa-php text-primary"></i> PHP
+                        </a>
+                        <a href="https://expressjs.com/pt-br/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Express.js">
+                            <i class="fas fa-server text-primary"></i> Express.js
+                        </a>
+                        <a href="https://developer.mozilla.org/pt-BR/docs/Glossary/SQL" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="SQL">
+                            <i class="fas fa-database text-primary"></i> SQL
+                        </a>
+                        <a href="https://www.python.org/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Python">
+                            <i class="fab fa-python text-primary"></i> Python
+                        </a>
+                        <a href="https://flask.palletsprojects.com/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Flask">
+                            <i class="fas fa-flask text-primary"></i> Flask
+                        </a>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm mb-2 p-3">
+                        <h6 class="text-muted mb-2"><i class="fas fa-code text-info me-1"></i>Frontend & Ferramentas</h6>
+                        <div>
+                        <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="JavaScript">
+                            <i class="fab fa-js-square text-primary"></i> JavaScript
+                        </a>
+                        <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="HTML5">
+                            <i class="fab fa-html5 text-primary"></i> HTML5
+                        </a>
+                        <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="CSS3">
+                            <i class="fab fa-css3-alt text-primary"></i> CSS3
+                        </a>
+                        <a href="https://getbootstrap.com/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Bootstrap 5">
+                            <i class="fab fa-bootstrap text-primary"></i> Bootstrap 5
+                        </a>
+                        <a href="https://www.docker.com/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Docker">
+                            <i class="fab fa-docker text-primary"></i> Docker
+                        </a>
+                        <a href="https://git-scm.com/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Git">
+                            <i class="fab fa-git-alt text-primary"></i> Git
+                        </a>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm mb-2 p-3">
+                        <h6 class="text-muted mb-2"><i class="fas fa-graduation-cap text-success me-1"></i>Acadêmico & Outros</h6>
+                        <div>
+                        <a href="https://devdocs.io/c/" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Linguagem C">
+                            <i class="fas fa-code text-primary"></i> C
+                        </a>
+                        <a href="https://pt.wikipedia.org/wiki/Portugol" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Portugol">
+                            <i class="fas fa-terminal text-primary"></i> Portugol
+                        </a>
+                        <a href="https://pt.wikipedia.org/wiki/Linguagem_de_montagem" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Assembly">
+                            <i class="fas fa-microchip text-primary"></i> Assembly
+                        </a>
+                        <a href="https://youtu.be/1H4wla-Yhjw?si=w7g2Abhd3aK8t8a3" target="_blank" class="badge bg-light text-dark m-1 p-2 text-decoration-none" title="Violão Clássico">
+                            <i class="fas fa-guitar text-primary"></i> Violão Clássico
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <a href="contato.html" class="btn btn-primary">
+                        <i class="fas fa-envelope me-1"></i>Vamos Conversar!
+                    </a>
+                    <a href="src/assets/pdf/certificates/curriculum-vitae.pdf" download class="btn btn-outline-primary">
+                        <i class="fas fa-download me-1"></i>Baixar CV
+                    </a>
+                    <a href="#projetos" class="btn btn-outline-secondary scroll-link">
+                        <i class="fas fa-code me-1"></i>Ver Projetos
+                    </a>
+                </div>
         </div>
-        <div class="cta-buttons">
-            <a href="src/assets/pdf/certificates/curriculum-vitae.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Baixar CV</a>
-            <a href="#projetos" class="btn btn-primary scroll-link"><i class="fas fa-code"></i> Ver Projetos</a>
         </div>
     </div>
-
 </header>
 
-<main class="container">
+<!-- Main Content -->
+<main class="container my-4">
 
-    <section id="sobre" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-user"></i> Sobre Mim</h2>
-        <p>
-            Sou estudante de Engenharia de Software na Unifio, com forte interesse em desenvolvimento backend, que é a área que mais me atrai no momento.
-            Atualmente, estudo Java, PHP, Docker (utilizado para manter um servidor local e facilitar a execução das tarefas de PHP da faculdade), Cálculo 1 e Engenharia de Requisitos, com foco na elaboração de diagramas de caso de uso.
-            Embora tenha afinidade com Java, também continuo aprofundando meus conhecimentos em JavaScript e aprendendo frameworks como Express.js, além de estudar Flask com Python e SQL com SQLite.
-            Minha formação complementar em Música — estudo avançado de Violão Clássico no Conservatório de Tatuí — contribuíram para o desenvolvimento de disciplina, pensamento estruturado e atenção aos detalhes, qualidades que levo comigo na resolução de problemas e na escrita de código.
-            Busco oportunidades para aplicar minhas habilidades em backend e seguir evoluindo com as tecnologias mais atuais do mercado.
-        </p>
+    <!-- Sobre Mim -->
+    <section id="sobre" class="mb-4 animate-on-scroll">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4 display-6">
+                    <i class="fas fa-user text-primary"></i> Sobre Mim
+                </h2>
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-lg-8 mx-auto">
+                                <p class="lead mb-4">
+                                    Estudante de <strong>Engenharia de Software</strong> com paixão por criar soluções backend robustas e escaláveis.
+                                </p>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary mb-3"><i class="fas fa-code me-2"></i>O que eu faço</h5>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Desenvolvimento de <strong>APIs RESTful</strong></li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Arquitetura de <strong>sistemas backend</strong></li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Modelagem e gestão de <strong>bancos de dados</strong></li>
+                                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Integração com <strong>serviços externos</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary mb-3"><i class="fas fa-lightbulb me-2"></i>Meus Diferenciais</h5>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i><strong>Músico</strong>: Disciplina e pensamento estruturado</li>
+                                            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i><strong>Proativo</strong>: Sempre buscando aprender</li>
+                                            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i><strong>Detalhista</strong>: Atenção aos pequenos detalhes</li>
+                                            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i><strong>Colaborativo</strong>: Trabalho em equipe</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-3 bg-light rounded">
+                                    <p class="mb-0 text-center">
+                                        <i class="fas fa-book-open text-primary me-2"></i>
+                                        <strong>Atualmente estudando:</strong> Java, PHP, Docker, Express.js, Flask, SQL, Engenharia de Requisitos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="objetivos" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-bullseye"></i> Objetivos Profissionais</h2>
-        <div class="card objective-card">
-            <p>
+    <!-- Objetivos Profissionais -->
+    <section id="objetivos" class="mb-4 animate-on-scroll">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4 display-6">
+                    <i class="fas fa-bullseye text-warning"></i> Objetivos Profissionais
+                </h2>
+                <div class="card border-start border-warning border-4 shadow-sm">
+                    <div class="card-body p-4">
+                        <p class="fst-italic mb-0">
                 Atualmente, busco ativamente uma oportunidade de estágio na área de Engenharia de Software, onde possa aplicar
                 meus conhecimentos teóricos e desenvolver experiência prática significativa. Meu interesse principal está no
-                desenvolvimento backend (Node.js, Java, Flask), arquitetura e bancos de dados. Comprometo-me a ser proativo, colaborativo
+                            desenvolvimento backend (PHP, Node.js, Java, Flask), arquitetura e bancos de dados. Comprometo-me a ser proativo, colaborativo
                 e estou sempre ansioso por aprender com a equipe e contribuir para os objetivos da empresa.
             </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="experiencia" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-briefcase"></i> Experiência</h2>
-        <div class="card">
-            <h3>Conservatório Dramático e Musical “Dr. Carlos de Campos", Tatuí</h3>
-            <p class="card-subtitle"><strong>Bolsista Membro da Camerata de Violões</strong> | JAN 2024 - DEZ 2024</p>
-            <ul>
-                <li>Participação ativa em ensaios, apresentações e eventos musicais.</li>
-                <li>Colaboração na preparação e execução de repertório variado.</li>
-                <li>Desenvolvimento de habilidades interpessoais, disciplina e trabalho em conjunto.</li>
+    <!-- Experiência -->
+    <section id="experiencia" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-4 display-6">
+            <i class="fas fa-briefcase text-primary"></i> Experiência
+        </h2>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Conservatório Dramático e Musical "Dr. Carlos de Campos", Tatuí</h5>
+                        <h6 class="card-subtitle mb-3 text-muted">
+                            <strong>Bolsista Membro da Camerata de Violões</strong> | JAN 2024 - DEZ 2024
+                        </h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Participação em <strong>20+ apresentações</strong> públicas e eventos musicais</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Colaboração na preparação de <strong>repertório variado</strong> em grupo de 12 músicos</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Desenvolvimento de <strong>disciplina, trabalho em equipe</strong> e gestão de tempo</li>
+                            <li class="mb-2"><i class="fas fa-medal text-warning me-2"></i>Bolsa integral por <strong>mérito artístico</strong></li>
             </ul>
         </div>
-        <div class="card">
-            <h3>Microtec Papelaria e Informática, Ourinhos</h3>
-            <p class="card-subtitle"><strong>Estagiário</strong> | NOV 2020 - MAR 2021</p>
-            <ul>
-                <li>Atendimento ao cliente e suporte técnico básico (hardware/software/office).</li>
-                <li>Organização de estoque e utilização de software de inventário.</li>
-                <li>Instalação e configuração de sistemas e periféricos.</li>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Microtec Papelaria e Informática, Ourinhos</h5>
+                        <h6 class="card-subtitle mb-3 text-muted">
+                            <strong>Estagiário</strong> | NOV 2020 - MAR 2021
+                        </h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Atendimento de <strong>15+ clientes/dia</strong> com suporte técnico (hardware/software/office)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Gestão de <strong>estoque</strong> e utilização de software de inventário</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Instalação e configuração de <strong>sistemas operacionais</strong> e periféricos</li>
+                            <li class="mb-2"><i class="fas fa-user-check text-success me-2"></i>Avaliação positiva por <strong>proatividade</strong> e comunicação</li>
             </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="formacao" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-graduation-cap"></i> Formação</h2>
-        <div class="card">
-            <div class="card-header">
-                <h3>Unifio, Ourinhos — Bacharelado em Engenharia de Software</h3>
-                <p class="card-subtitle">JAN 2025 - DEC 2028</p>
+    <!-- Soft Skills -->
+    <section id="soft-skills" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-4 display-6">
+            <i class="fas fa-users text-success"></i> Competências Interpessoais
+        </h2>
+        
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-handshake fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Trabalho em Equipe</h5>
+                        <p class="card-text text-muted small">Experiência em projetos colaborativos e grupos musicais</p>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p>Foco em desenvolvimento de software, teoria da computação, bancos de dados, arquitetura de software e metodologias ágeis.</p>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-lightbulb fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="card-title">Resolução de Problemas</h5>
+                        <p class="card-text text-muted small">Pensamento analítico e busca por soluções eficientes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-book-reader fa-3x text-info"></i>
+                        </div>
+                        <h5 class="card-title">Aprendizado Contínuo</h5>
+                        <p class="card-text text-muted small">Sempre atualizado com novas tecnologias e práticas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-tasks fa-3x text-success"></i>
+                        </div>
+                        <h5 class="card-title">Organização</h5>
+                        <p class="card-text text-muted small">Disciplina e atenção aos detalhes em cada projeto</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Conservatório Dramático e Musical “Dr. Carlos de Campos”, Tatuí — Curso de Violão Clássico</h3>
-                <p class="card-subtitle">JAN 2022 - DEC 2025</p>
-            </div>
+    </section>
+
+    <!-- Formação -->
+    <section id="formacao" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-4 display-6">
+            <i class="fas fa-graduation-cap text-primary"></i> Formação
+        </h2>
+        
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
             <div class="card-body">
-                <p>
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                            <h5 class="card-title mb-0">Unifio, Ourinhos — Bacharelado em Engenharia de Software</h5>
+                            <span class="badge bg-primary">JAN 2025 - DEC 2028</span>
+            </div>
+                        <p class="card-text mt-3">Foco em desenvolvimento de software, teoria da computação, bancos de dados, arquitetura de software e metodologias ágeis.</p>
+            </div>
+        </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                            <h5 class="card-title mb-0">Conservatório Dramático e Musical "Dr. Carlos de Campos", Tatuí — Curso de Violão Clássico</h5>
+                            <span class="badge bg-primary">JAN 2022 - DEC 2025</span>
+                        </div>
+                        <p class="card-text mt-3">
                     Estudo avançado de Violão Clássico em uma das mais renomadas instituições musicais da America.
                     Experiência prática em música de câmara, dueto de violão e canto coral.
                     Orientado por professores como Edson Lopes, Márcia Boroto e Fúlvio Ferrari.
@@ -151,272 +405,497 @@
                 </p>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>UNINTER, Curitiba — Licenciatura em Música</h3>
-                <p class="card-subtitle">JAN 2021 - DEZ 2024</p>
             </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm position-relative">
             <div class="card-body">
-                <p>Formação teórico-prática em música, educação musical, percepção e tecnologias aplicadas à música.</p>
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                            <h5 class="card-title mb-0">UNINTER, Curitiba — Licenciatura em Música</h5>
+                            <span class="badge bg-primary">JAN 2021 - DEZ 2024</span>
             </div>
-            <div class="cert-actions">
-                <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+                        <p class="card-text mt-3">Formação teórico-prática em música, educação musical, percepção e tecnologias aplicadas à música.</p>
+                        
+                        <div class="dropdown position-absolute bottom-0 end-0 m-3">
+                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-h"></i>
-                    <span class="sr-only">Ações</span>
                 </button>
-                <div class="cert-dropdown-menu">
-                    <a href="src/assets/pdf/certificates/uninter-licenciatura-musica-censurado.pdf" download class="cert-dropdown-link">
-                        <i class="fas fa-download"></i> Baixar Certificado
-                    </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="src/assets/pdf/certificates/uninter-licenciatura-musica-censurado.pdf" download>
+                                        <i class="fas fa-download me-2"></i> Baixar Certificado
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projetos" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-laptop-code"></i> Projetos</h2>
-        <p class="carousel-instruction">Arraste os cards para navegar</p>
+    <!-- Projetos -->
+    <section id="projetos" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-2 display-6">
+            <i class="fas fa-laptop-code text-primary"></i> Projetos
+        </h2>
+        <p class="text-center text-muted mb-4 fst-italic">Use as setas para navegar</p>
 
-        <div class="swiper-container project-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>WeatherNow 🌤️ - Dashboard Interativo de Clima</h3>
-                        <p class="project-tech"><strong>[HTML, CSS, Vanilla JS, OpenWeatherMap API]</strong></p>
-                        <p>Dashboard responsivo que consome a API OpenWeatherMap. Funcionalidades: busca por cidade, relógio, troca de
-                            tema (localStorage), requisições assíncronas (Fetch) e manipulação do DOM.</p>
-                        <div class="project-links">
-                            <a href="https://weather-now-lyart.vercel.app/" target="_blank" class="project-link"><i class="fas fa-rocket"></i> Teste agora!</a>
-                            <a href="https://github.com/rafaeldiasgarcia/WeatherNow" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+        <div id="projectsCarousel" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">WeatherNow 🌤️ - Dashboard Interativo de Clima</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1"><i class="fab fa-html5"></i> HTML</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-css3-alt"></i> CSS</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-js"></i> JavaScript</span>
+                                    <span class="badge bg-info text-dark me-1"><i class="fas fa-cloud"></i> API</span>
+                                </div>
+                                <p class="card-text">Dashboard responsivo que consome a API OpenWeatherMap. <strong>Funcionalidades:</strong> busca por cidade, relógio, troca de tema (localStorage), requisições assíncronas (Fetch) e manipulação do DOM.</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Impacto:</strong> Interface intuitiva para consulta climática em tempo real</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://weather-now-lyart.vercel.app/" target="_blank" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-rocket"></i> Teste agora!
+                                    </a>
+                                    <a href="https://github.com/rafaeldiasgarcia/WeatherNow" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>Técnicas de Violão Clássico 📙 🎶</h3>
-                        <p class="project-tech"><strong>[HTML, CSS, JavaScript]</strong></p>
-                        <p>Guia interativo e colaborativo sobre as técnicas do violão clássico. Nascido de uma discussão no fórum Violão.org, o site busca ser um recurso crescente para a comunidade de violonistas.</p>
-                        <div class="project-links">
-                            <a href="https://rafaeldiasgarcia.github.io/tecnicas-violao-classico/" target="_blank" class="project-link"><i class="fas fa-rocket"></i> Acesse o Guia!</a>
-                            <a href="https://github.com/rafaeldiasgarcia/tecnicas-violao-classico" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+                
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Técnicas de Violão Clássico 📙 🎶</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1"><i class="fab fa-html5"></i> HTML</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-css3-alt"></i> CSS</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-js"></i> JavaScript</span>
+                                </div>
+                                <p class="card-text">Guia interativo e colaborativo sobre as técnicas do violão clássico. Nascido de uma discussão no fórum Violão.org, o site busca ser um recurso crescente para a comunidade de violonistas.</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Impacto:</strong> Recurso educacional para comunidade musical</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://rafaeldiasgarcia.github.io/tecnicas-violao-classico/" target="_blank" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-rocket"></i> Acesse o Guia!
+                                    </a>
+                                    <a href="https://github.com/rafaeldiasgarcia/tecnicas-violao-classico" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>Portfólio Pessoal - Rafael Dias Garcia</h3>
-                        <p class="project-tech"><strong>[HTML5, CSS3, Vanilla JavaScript, Font Awesome, Formspree]</strong></p>
-                        <p>Portfólio pessoal desenvolvido como vitrine de habilidades, experiências e projetos como estudante de Engenharia
-                            de Software. Possui design responsivo, tema dark/light e animações.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/rafaeldiasgarcia/curriculo" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório deste site!</a>
+                
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Portfólio Pessoal - Rafael Dias Garcia</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1"><i class="fab fa-html5"></i> HTML5</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-js"></i> JavaScript</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                                </div>
+                                <p class="card-text">Portfólio pessoal desenvolvido como vitrine de habilidades, experiências e projetos como estudante de Engenharia de Software. <strong>Recursos:</strong> design responsivo, tema dark/light, animações suaves e formulário de contato.</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Resultado:</strong> Presença profissional online completa</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://github.com/rafaeldiasgarcia/curriculo" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório deste site!
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>BookshelfAPI 📚 - Backend</h3>
-                        <p class="project-tech"><strong>[Node.js, Express.js, UUID, JSON]</strong></p>
-                        <p>Uma API REST simples com Node.js e Express para gerenciar uma coleção de livros, usando um arquivo JSON local
-                            para persistência. Ideal para aprendizado e portfólio.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/rafaeldiasgarcia/BookshelfAPI" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+                
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">BookshelfAPI 📚 - Backend</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-success me-1"><i class="fab fa-node-js"></i> Node.js</span>
+                                    <span class="badge bg-success me-1"><i class="fas fa-server"></i> Express.js</span>
+                                    <span class="badge bg-warning text-dark me-1"><i class="fas fa-file-code"></i> JSON</span>
+                                    <span class="badge bg-info text-dark me-1"><i class="fas fa-plug"></i> REST API</span>
+                                </div>
+                                <p class="card-text">API RESTful para gerenciar uma coleção de livros com <strong>CRUD completo</strong>. Implementa rotas, middlewares e persistência em JSON. <strong>Aprendizados:</strong> arquitetura REST, roteamento e manipulação de dados.</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Resultado:</strong> API funcional para gerência de biblioteca</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://github.com/rafaeldiasgarcia/BookshelfAPI" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>🧠 CS50x: Problem Sets & Final Project</h3>
-                        <p class="project-tech"><strong>[C, Python, Scratch, SQL, HTML, CSS, JavaScript, Flask]</strong></p>
-                        <p>Repositório com minhas soluções do CS50x – Introduction to Computer Science (Harvard). Abrange fundamentos
-                            da computação com C, Python, SQL, HTML, CSS, JavaScript, Flask e Scratch, incluindo algoritmos, estruturas de dados e web.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/rafaeldiasgarcia/CS50x" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+                
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">🧠 CS50x: Problem Sets & Final Project</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary me-1"><i class="fas fa-code"></i> C</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-python"></i> Python</span>
+                                    <span class="badge bg-warning text-dark me-1"><i class="fas fa-database"></i> SQL</span>
+                                    <span class="badge bg-success me-1"><i class="fas fa-flask"></i> Flask</span>
+                                    <span class="badge bg-info text-dark me-1"><i class="fab fa-js"></i> JavaScript</span>
+                                </div>
+                                <p class="card-text">Soluções completas do curso <strong>CS50x (Harvard)</strong>. Inclui algoritmos, estruturas de dados, programação em C/Python, web com Flask e projeto final. <strong>Destaque:</strong> Fundamentos sólidos de Ciência da Computação.</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Impacto:</strong> Base sólida em algoritmos e programação</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://github.com/rafaeldiasgarcia/CS50x" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card project-card">
-                        <h3>Termo Clone (Pset10 - CS50x)</h3>
-                        <p class="project-tech"><strong>[Python, Flask, HTML, CSS, JavaScript]</strong></p>
-                        <p>Recriação em português do popular jogo de adivinhar palavras "Termo" (Wordle), como projeto final do curso
-                            CS50x de Harvard. O jogador tem seis tentativas para adivinhar uma palavra secreta de cinco letras, com feedback visual a cada palpite.</p>
-                        <div class="project-links">
-                            <a href=https://termo-clone.onrender.com/ target="_blank" class="project-link"><i class="fas fa-rocket"></i> Teste agora!</a>
-                            <a href="https://github.com/rafaeldiasgarcia/termo-clone" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositório</a>
+                
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center px-3">
+                        <div class="card project-card border-0 shadow">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Termo Clone (Pset10 - CS50x)</h5>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1"><i class="fab fa-python"></i> Python</span>
+                                    <span class="badge bg-success me-1"><i class="fas fa-flask"></i> Flask</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-html5"></i> HTML</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-css3-alt"></i> CSS</span>
+                                    <span class="badge bg-primary me-1"><i class="fab fa-js"></i> JavaScript</span>
+                                </div>
+                                <p class="card-text">Clone do jogo <strong>Wordle/Termo</strong> desenvolvido como projeto final do CS50x. Sistema de feedback visual inteligente, validação de palavras e interface responsiva. <strong>Deploy:</strong> Render (backend Flask).</p>
+                                <p class="text-success small mb-0"><i class="fas fa-check-circle me-1"></i><strong>Resultado:</strong> Jogo funcional com 6 tentativas e feedback instantâneo</p>
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a href="https://termo-clone.onrender.com/" target="_blank" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-rocket"></i> Teste agora!
+                                    </a>
+                                    <a href="https://github.com/rafaeldiasgarcia/termo-clone" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fab fa-github"></i> Repositório
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
     </section>
 
-    <section id="certificacoes" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-certificate"></i> Certificações</h2>
-        <ul class="cert-list">
-            <li class="cert-item">
-                <div class="cert-text-wrapper">
-            <span class="cert-text">
-              <strong>Harvard University:</strong> Ciência da Computação <span class="cert-details">(CS50x: 150h)</span>
-            </span>
+    <!-- Certificações -->
+    <section id="certificacoes" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-4 display-6">
+            <i class="fas fa-certificate text-primary"></i> Certificações
+        </h2>
+        
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm position-relative">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">
+                                    <strong>Harvard University:</strong> Ciência da Computação 
+                                    <span class="text-muted">(CS50x: 150h)</span>
+                                </h6>
                 </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
                     </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="src/assets/pdf/certificates/harvardx-certificado-verificado-cs50x.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar Certificado Verificado
-                        </a>
-                        <a href="https://courses.edx.org/certificates/1c49f499b0bf4b90ba41f1408938b342" target="_blank" class="cert-dropdown-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Credencial
-                        </a>
-                        <a href="src/assets/pdf/certificates/cs50x.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar Certificado CS50x
-                        </a>
-                        <a href="https://certificates.cs50.io/3ec00f83-94ab-4dc7-bfb2-6f5a4646b76a.pdf?size=letter" target="_blank" class="cert-dropdown-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Credencial
-                        </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/harvardx-certificado-verificado-cs50x.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar Certificado Verificado
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="https://courses.edx.org/certificates/1c49f499b0bf4b90ba41f1408938b342" target="_blank">
+                                            <i class="fas fa-external-link-alt me-2"></i> Ver Credencial
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/cs50x.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar Certificado CS50x
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="https://certificates.cs50.io/3ec00f83-94ab-4dc7-bfb2-6f5a4646b76a.pdf?size=letter" target="_blank">
+                                            <i class="fas fa-external-link-alt me-2"></i> Ver Credencial
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="position-absolute cert-badge-img" href="https://www.credly.com/badges/ea280ac4-0a33-4016-9bc1-78fc6f161a4d/public_url" target="_blank">
+                                <img src="src/assets/img/cs50x-introduction-to-computer-science.1-credly.png" alt="CS50x Badge" class="rounded shadow-sm">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <a class="cert-badge cert-badge-cs50" href="https://www.credly.com/badges/ea280ac4-0a33-4016-9bc1-78fc6f161a4d/public_url" target="_blank" aria-label="CS50x badge">
-                    <img src="src/assets/img/cs50x-introduction-to-computer-science.1-credly.png" alt="CS50x Credly badge">
+            </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm position-relative">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">
+                                    <strong>Cisco:</strong> JavaScript Essentials 1 
+                                    <span class="text-muted">(JavaScript: 40h)</span>
+                                </h6>
+                            </div>
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/cisco-unifio-js.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar Certificado
                 </a>
             </li>
-            <li class="cert-item">
-                <div class="cert-text-wrapper">
-            <span class="cert-text">
-              <strong>Cisco:</strong> JavaScript Essentials 1 <span class="cert-details">(JavaScript: 40h)</span>
-            </span>
-                </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
-                    </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="src/assets/pdf/certificates/cisco-unifio-js.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar Certificado
-                        </a>
-                        <a href="src/assets/pdf/certificates/cisco-js-badge.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar Badge
-                        </a>
-                        <a href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/linked_in_profile" target="_blank" class="cert-dropdown-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Credencial
-                        </a>
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/cisco-js-badge.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar Badge
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/linked_in_profile" target="_blank">
+                                            <i class="fas fa-external-link-alt me-2"></i> Ver Credencial
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="position-absolute cert-badge-img" href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/public_url" target="_blank">
+                                <img src="src/assets/img/javascript-essentials-1-credly.png" alt="Cisco JS Badge" class="rounded shadow-sm">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <a class="cert-badge cert-badge-js" href="https://www.credly.com/badges/0df91bd6-2ab3-4399-bebc-ab713252ea84/public_url" target="_blank" aria-label="Cisco JavaScript Essentials 1 badge">
-                    <img src="src/assets/img/javascript-essentials-1-credly.png" alt="Cisco JavaScript Essentials 1 Credly badge">
+            </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">
+                                    <strong>Huawei Talent Online:</strong> Python Advanced Module 
+                                    <span class="text-muted">(Python: 32h)</span>
+                                </h6>
+                            </div>
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/huawei-talent-online.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar PDF
                 </a>
             </li>
-            <li class="cert-item">
-                <div class="cert-text-wrapper">
-            <span class="cert-text">
-              <strong>Huawei Talent Online:</strong> Python Advanced Module <span class="cert-details">(Python: 32h)</span>
-            </span>
+                                </ul>
+                            </div>
                 </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
-                    </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="src/assets/pdf/certificates/huawei-talent-online.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar PDF
-                        </a>
                     </div>
                 </div>
-            </li>
-            <li class="cert-item">
-                <div class="cert-text-wrapper">
-            <span class="cert-text">
-              <strong>Alura:</strong> JavaScript for Backend <span class="cert-details">(Node.js: 44h)</span>
-            </span>
+            </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">
+                                    <strong>Alura:</strong> JavaScript for Backend 
+                                    <span class="text-muted">(Node.js: 44h)</span>
+                                </h6>
                 </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
                     </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="https://cursos.alura.com.br/degree/certificate/9c14158a-105c-4c18-bb40-c80ccd19dcf3?lang" target="_blank" class="cert-dropdown-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Certificado
-                        </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="https://cursos.alura.com.br/degree/certificate/9c14158a-105c-4c18-bb40-c80ccd19dcf3?lang" target="_blank">
+                                            <i class="fas fa-external-link-alt me-2"></i> Ver Certificado
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
-            <li class="cert-item">
-                <div class="cert-text-wrapper">
-            <span class="cert-text">
-              <strong>Alura:</strong> From Scratch: HTML and CSS for Web Projects <span class="cert-details">(JS/CSS/HTML: 44h)</span>
-            </span>
+            </div>
+            
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-2">
+                                    <strong>Alura:</strong> From Scratch: HTML and CSS for Web Projects 
+                                    <span class="text-muted">(JS/CSS/HTML: 44h)</span>
+                                </h6>
                 </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
                     </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="https://cursos.alura.com.br/degree/certificate/93b0bb99-02cc-462d-adda-73ba08a93c4f?lang=en" target="_blank" class="cert-dropdown-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Certificado
-                        </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="https://cursos.alura.com.br/degree/certificate/93b0bb99-02cc-462d-adda-73ba08a93c4f?lang=en" target="_blank">
+                                            <i class="fas fa-external-link-alt me-2"></i> Ver Certificado
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </section>
 
-    <section id="idiomas" class="content-section animate-on-scroll">
-        <h2><i class="fas fa-language"></i> Idiomas</h2>
-        <ul class="lang-list">
-            <li class="lang-item">
-                <div class="lang-info">
-                    <span class="lang-name"><strong>Português:</strong> Nativo Fluente</span>
-                    <span class="lang-level-framework">(C2)</span>
-                </div>
-            </li>
-            <li class="lang-item">
-                <div class="lang-info">
-                    <span class="lang-name"><strong>Inglês:</strong> Avançado</span>
-                    <span class="lang-level-framework">(C1)</span>
-                </div>
-                <div class="cert-actions">
-                    <button class="cert-action-btn cert-action-dropdown-toggle" aria-haspopup="true" aria-expanded="false" title="Mais ações">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <span class="sr-only">Ações</span>
-                    </button>
-                    <div class="cert-dropdown-menu">
-                        <a href="src/assets/pdf/certificates/uninter-ingles-avancado.pdf" download class="cert-dropdown-link">
-                            <i class="fas fa-download"></i> Baixar Certificado
-                        </a>
+    <!-- Idiomas -->
+    <section id="idiomas" class="mb-4 animate-on-scroll">
+        <h2 class="text-center mb-4 display-6">
+            <i class="fas fa-language text-warning"></i> Idiomas
+        </h2>
+        
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm border-start border-warning border-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1"><strong>Português:</strong> Nativo Fluente</h6>
+                                <span class="badge bg-warning text-dark">C2</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm border-start border-warning border-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1"><strong>Inglês:</strong> Avançado</h6>
+                                <span class="badge bg-warning text-dark">C1</span>
+                </div>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="src/assets/pdf/certificates/uninter-ingles-avancado.pdf" download>
+                                            <i class="fas fa-download me-2"></i> Baixar Certificado
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </main>
 
-<button id="scrollToTopBtn" title="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
-<button id="theme-toggle-btn" class="theme-toggle" aria-label="Alternar tema">
-    <i class="fas fa-sun theme-icon-sun"></i>
-    <i class="fas fa-moon theme-icon-moon"></i>
-</button>
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="src/script/script.js"></script>
-
-</body>
-
-<footer class="footer">
+<!-- Footer -->
+<footer class="bg-dark text-white py-5 mt-5">
     <div class="container">
-        <p>© <span id="currentYear"></span> Rafael Dias Garcia. Feito com <i class="fas fa-heart"></i> e <i class="fas fa-code"></i>.</p>
+        <div class="row g-4">
+            <div class="col-lg-6 text-center text-lg-start">
+                <h5 class="mb-3">Rafael Dias Garcia</h5>
+                <p class="text-muted mb-3">Desenvolvedor Backend | Engenharia de Software</p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                    <a href="https://github.com/rafaeldiasgarcia" target="_blank" class="btn btn-outline-light btn-sm" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rafaeldiasgarcia/" target="_blank" class="btn btn-outline-light btn-sm" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="contato.html" class="btn btn-outline-light btn-sm" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 text-center text-lg-end">
+                <h5 class="mb-3">Links Rápidos</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#sobre" class="text-white text-decoration-none"><i class="fas fa-user me-2"></i>Sobre Mim</a></li>
+                    <li class="mb-2"><a href="#projetos" class="text-white text-decoration-none"><i class="fas fa-laptop-code me-2"></i>Projetos</a></li>
+                    <li class="mb-2"><a href="#experiencia" class="text-white text-decoration-none"><i class="fas fa-briefcase me-2"></i>Experiência</a></li>
+                    <li class="mb-2"><a href="contato.html" class="text-white text-decoration-none"><i class="fas fa-envelope me-2"></i>Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="my-4 border-secondary">
+        
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="mb-0 text-muted">
+                    © <span id="currentYear"></span> Rafael Dias Garcia. Feito com <i class="fas fa-heart text-danger"></i> e <i class="fas fa-code text-primary"></i>
+                </p>
+                <p class="mb-0 text-muted small mt-2">
+                    <a href="https://github.com/rafaeldiasgarcia/curriculo" target="_blank" class="text-muted text-decoration-none">
+                        <i class="fab fa-github me-1"></i>Código deste site disponível no GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 </footer>
 
+<!-- Floating Buttons -->
+<button id="scrollToTopBtn" class="btn btn-outline-primary rounded-circle position-fixed shadow" title="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="src/script/script.js"></script>
+
+</body>
 </html>

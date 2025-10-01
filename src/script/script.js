@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Typing Effect
     // ==========================================================================
     
-    const textToType = "Estudante de Engenharia de Software | Backend Dev";
+    const textToType = "Estudante de Engenharia de Software | Full-Stack Dev";
     const typingSpeed = 50;
     const deletingSpeed = 30;
     const delayBeforeDelete = 4000;
@@ -192,6 +192,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ==========================================================================
+    // Dropdown Z-Index Handler - Garante que dropdowns fiquem sempre visíveis
+    // ==========================================================================
+    
+    const allDropdowns = document.querySelectorAll('.dropdown-toggle');
+    
+    allDropdowns.forEach(dropdown => {
+        dropdown.addEventListener('show.bs.dropdown', function() {
+            // Encontra o card pai
+            const parentCard = this.closest('.card');
+            if (parentCard) {
+                parentCard.style.zIndex = '10000';
+                parentCard.style.position = 'relative';
+            }
+        });
+        
+        dropdown.addEventListener('hide.bs.dropdown', function() {
+            // Restaura o z-index original
+            const parentCard = this.closest('.card');
+            if (parentCard) {
+                // Aguarda a animação terminar antes de resetar
+                setTimeout(() => {
+                    parentCard.style.zIndex = '';
+                }, 300);
+            }
+        });
+    });
+
+    // ==========================================================================
+    // Auto-close Dropdown on Mouse Leave
+    // ==========================================================================
+    
+    const allDropdownContainers = document.querySelectorAll('.dropdown');
+    
+    allDropdownContainers.forEach(dropdownContainer => {
+        let hideTimeout;
+        
+        // Quando o mouse sai do container do dropdown
+        dropdownContainer.addEventListener('mouseleave', function() {
+            const dropdownMenu = this.querySelector('.dropdown-menu');
+            const dropdownToggle = this.querySelector('.dropdown-toggle');
+            
+            if (dropdownMenu && dropdownMenu.classList.contains('show')) {
+                // Adiciona um pequeno delay para melhor UX
+                hideTimeout = setTimeout(() => {
+                    const bsDropdown = bootstrap.Dropdown.getInstance(dropdownToggle);
+                    if (bsDropdown) {
+                        bsDropdown.hide();
+                    }
+                }, 300); // 300ms de delay
+            }
+        });
+        
+        // Cancela o fechamento se o mouse voltar
+        dropdownContainer.addEventListener('mouseenter', function() {
+            if (hideTimeout) {
+                clearTimeout(hideTimeout);
+            }
+        });
+    });
+
+    // ==========================================================================
     // Form Status Handler (Contact Page)
     // ==========================================================================
     
@@ -204,6 +265,13 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.innerHTML = '<div class="alert alert-info">Enviando mensagem...</div>';
         });
     }
+
+    // ==========================================================================
+    // Initialize Bootstrap Tooltips
+    // ==========================================================================
+    
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
     // ==========================================================================
     // Console Log

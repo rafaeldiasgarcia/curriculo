@@ -1,30 +1,48 @@
 /* ==========================================================================
    Bootstrap 5 Custom Styles - Rafael Dias Garcia Portfolio
+   Redesigned for Modern Aesthetics ✨
    ========================================================================== */
 
 :root {
-    /* Dark Theme Colors */
-    --bg-dark: #1a1a1e;
-    --card-bg-dark: #252a34;
-    --text-dark: #f0f0f0;
-    --text-muted-dark: #c0c0c0;
-    --border-dark: #3a3f4a;
+    /* Dark Theme Colors - Enhanced */
+    --bg-dark: #0a0e27;
+    --bg-dark-secondary: #131b33;
+    --card-bg-dark: rgba(30, 41, 59, 0.7);
+    --text-dark: #f1f5f9;
+    --text-muted-dark: #94a3b8;
+    --border-dark: rgba(71, 85, 105, 0.4);
     
-    /* Light Theme Colors */
-    --bg-light: #f4f7f9;
-    --card-bg-light: #ffffff;
-    --text-light: #212529;
-    --text-muted-light: #495057;
-    --border-light: #dee2e6;
+    /* Light Theme Colors - Enhanced */
+    --bg-light: #f8fafc;
+    --bg-light-secondary: #f1f5f9;
+    --card-bg-light: rgba(255, 255, 255, 0.9);
+    --text-light: #1e293b;
+    --text-muted-light: #64748b;
+    --border-light: #e2e8f0;
     
-    /* Brand Colors */
-    --primary: #0d6efd;
-    --primary-hover: #0b5ed7;
-    --success: #198754;
-    --warning: #ffc107;
-    --info: #0dcaf0;
-    --danger: #dc3545;
-
+    /* Brand Colors - Modern Palette */
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --info: #06b6d4;
+    --danger: #ef4444;
+    --accent: #ec4899;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --gradient-card: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
+    
     --font-family: 'Poppins', sans-serif;
 }
 
@@ -40,16 +58,43 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
     font-family: var(--font-family);
     background-color: var(--bg-dark);
     color: var(--text-dark);
-    background-image: radial-gradient(rgb(31, 34, 37) 3px, transparent 0.5px);
-    background-size: 10px 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    padding-top: 56px;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(118, 75, 162, 0.15) 0px, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 0;
+    position: relative;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: backgroundScroll 60s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes backgroundScroll {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
 }
 
 /* Dark Mode Text Fixes */
@@ -126,7 +171,16 @@ body:not(.light-mode) .bg-light strong {
 body.light-mode {
     background-color: var(--bg-light);
     color: var(--text-light);
-    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 3px, transparent 0.5px);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px;
+}
+
+body.light-mode::before {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 body.light-mode .navbar {
@@ -194,6 +248,49 @@ body:not(.light-mode) .dropdown-item:focus {
 
 body:not(.light-mode) .dropdown-divider {
     border-color: var(--border-dark);
+}
+
+/* FORÇA dropdowns a ficarem visíveis em cima de cards */
+.dropdown {
+    position: relative !important;
+    z-index: 9000 !important;
+}
+
+.dropdown-menu {
+    position: absolute !important;
+    z-index: 10200 !important;
+}
+
+.dropdown-menu.show {
+    z-index: 10200 !important;
+    position: absolute !important;
+    display: block !important;
+}
+
+/* Força dropdown-menu-end a abrir à direita */
+.dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* Garante que o dropdown position-absolute tenha posicionamento correto */
+.position-absolute.dropdown {
+    position: absolute !important;
+}
+
+.position-absolute.dropdown .dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    top: 100% !important;
+    bottom: auto !important;
+    margin-top: 0.125rem !important;
+}
+
+/* Garante que o botão dropdown seja clicável */
+.dropdown-toggle {
+    z-index: 9001 !important;
+    position: relative !important;
 }
 
 /* Dark Mode - Nav Links */
@@ -307,6 +404,13 @@ body:not(.light-mode) footer p {
     color: var(--text-muted-dark) !important;
 }
 
+/* Garantir que scroll button fique sempre acima - PRIORIDADE MÁXIMA */
+#scrollToTopBtn,
+#scrollToTopBtn.show {
+    z-index: 999999 !important;
+    position: fixed !important;
+}
+
 /* Border Warning - Ensure yellow in both modes */
 .border-warning {
     border-color: var(--warning) !important;
@@ -316,13 +420,15 @@ body.light-mode .border-warning {
     border-color: #ffc107 !important;
 }
 
-/* Pulse Animation for Badge */
+/* Pulse Animation for Badge - Enhanced */
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
+        transform: scale(1);
     }
     50% {
-        opacity: 0.5;
+        opacity: 0.8;
+        transform: scale(1.05);
     }
 }
 
@@ -330,8 +436,18 @@ body.light-mode .border-warning {
     animation: pulse 2s ease-in-out infinite;
 }
 
+.badge.bg-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: none !important;
+}
+
+body:not(.light-mode) .badge.bg-success {
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
 /* ==========================================================================
-   Scroll Progress Bar
+   Scroll Progress Bar - Enhanced
    ========================================================================== */
 
 #scroll-progress-container {
@@ -339,37 +455,201 @@ body.light-mode .border-warning {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    z-index: 1001;
-    padding: 0 15px;
-    margin-top: 56px;
+    height: 3px;
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    background: transparent;
 }
 
 #scroll-progress-bar {
     height: 100%;
-    background-color: var(--primary);
+    background: var(--gradient-primary);
+    box-shadow: 0 1px 4px rgba(102, 126, 234, 0.3);
     transform-origin: left center;
     transform: scaleX(0);
-    transition: transform 0.1s ease-out;
-    border-radius: 2px;
+    transition: transform 0.15s ease-out;
+    border-radius: 0;
+    position: relative;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 /* ==========================================================================
-   Navbar Customization
+   Navbar Customization - Glassmorphism
    ========================================================================== */
 
-.navbar {
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+.navbar,
+.navbar.fixed-top {
+    background: rgba(10, 14, 39, 0.8) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 10050 !important;
+}
+
+body.light-mode .navbar,
+body.light-mode .navbar.fixed-top {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+/* FORÇA O CONTAINER A NÃO ESCONDER O MENU */
+.navbar .container,
+.navbar .container-fluid {
+    overflow: visible !important;
+    position: static !important;
+}
+
+/* Remove qualquer restrição de altura/overflow */
+nav.navbar,
+nav.fixed-top,
+.navbar-dark,
+.bg-dark {
+    contain: none !important;
+    clip-path: none !important;
+    overflow: visible !important;
+}
+
+/* Navbar dropdown (mobile menu) styling - SOLUÇÃO DEFINITIVA */
+@media (max-width: 991px) {
+    /* Garante que o body não esconde o menu */
+    body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+    
+    /* FORÇA o menu a sair do container */
+    #navbarNav,
+    .navbar-collapse {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        z-index: 10060 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        transition: max-height 0.35s ease-in-out !important;
+        transform: translateZ(0) !important;
+    }
+    
+    /* Quando o menu está ABERTO */
+    #navbarNav.show,
+    .navbar-collapse.show {
+        display: block !important;
+        max-height: 80vh !important;
+        background: rgba(10, 14, 39, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        padding: 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+        border-radius: 0 0 12px 12px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Animação ao abrir/fechar */
+    #navbarNav.collapsing,
+    .navbar-collapse.collapsing {
+        display: block !important;
+        background: rgba(10, 14, 39, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        padding: 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+        height: auto !important;
+        transition: max-height 0.35s ease !important;
+    }
+    
+    /* Modo claro */
+    body.light-mode #navbarNav.show,
+    body.light-mode .navbar-collapse.show,
+    body.light-mode #navbarNav.collapsing,
+    body.light-mode .navbar-collapse.collapsing {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+/* Garante que cards e outros elementos não sobreponham o menu */
+@media (max-width: 991px) {
+    main,
+    section,
+    footer,
+    .carousel,
+    .btn:not(.navbar-toggler):not(#theme-toggle-btn):not(.dropdown-toggle) {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    /* Cards sem dropdown ficam abaixo */
+    .card:not(:has(.dropdown)) {
+        z-index: 1 !important;
+    }
+    
+    #hero,
+    header {
+        z-index: 1 !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #navbarNav,
+    .navbar-collapse {
+        position: relative !important;
+        z-index: auto !important;
+        max-height: none !important;
+    }
 }
 
 .navbar-brand {
-    color: var(--primary) !important;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 1.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
 }
 
 .nav-link {
-    transition: color 0.3s ease;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
 }
 
 .nav-link:hover,
@@ -378,46 +658,82 @@ body.light-mode .border-warning {
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section - Enhanced
    ========================================================================== */
 
 #hero {
     min-height: auto;
     display: flex;
     align-items: center;
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 100%;
+    background: var(--gradient-hero);
+    opacity: 0.05;
+    filter: blur(80px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
 }
 
 #hero h1 {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    line-height: 1.3;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 800;
     word-wrap: break-word;
     overflow-wrap: break-word;
     margin-top: 0;
     padding-top: 10px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+body.light-mode #hero h1 {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 #hero h2 {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    line-height: 1.4;
-}
-
-#hero h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    line-height: 1.5;
+    font-weight: 600;
     min-height: 3em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+#hero p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
 #typing-effect {
     display: inline-block;
+    position: relative;
 }
 
 #typing-effect::after {
     content: '|';
     animation: blink 1s step-end infinite;
     color: var(--primary);
+    margin-left: 2px;
 }
 
 @keyframes blink {
@@ -425,16 +741,93 @@ body.light-mode .border-warning {
     50% { opacity: 0; }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   Buttons - Modern Design
+   ========================================================================== */
+
+.btn {
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 0.625rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    color: white !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    filter: brightness(1.1);
+    color: white !important;
+}
+
+body.light-mode .btn-primary {
+    color: white !important;
+}
+
+body.light-mode .btn-primary:hover {
+    color: white !important;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-2px);
+}
+
 /* Skills Tags Hover Effect */
 .skills-tags .badge {
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.skills-tags .badge i {
+    font-size: 1.1rem;
+    margin-right: 0.35rem;
 }
 
 .skills-tags .badge:hover {
-    transform: translateY(-2px);
-    background-color: var(--primary) !important;
+    transform: translateY(-2px) scale(1.03);
+    background: var(--gradient-primary) !important;
     color: white !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .skills-tags .badge:hover i {
@@ -477,11 +870,14 @@ body.light-mode .skills-tags .badge:hover i {
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .skills-tags .card:hover {
     background-color: rgba(255, 255, 255, 0.08);
     transform: translateY(-2px);
+    z-index: 2;
 }
 
 body.light-mode .skills-tags .card {
@@ -494,17 +890,125 @@ body.light-mode .skills-tags .card:hover {
 }
 
 /* ==========================================================================
-   Cards
+   Cards - Glassmorphism Design
    ========================================================================== */
 
 .card {
-    background-color: var(--card-bg-dark);
+    background: var(--card-bg-dark);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     color: var(--text-dark);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: visible !important;
+    z-index: 1;
+}
+
+/* Cards com dropdown precisam de z-index maior */
+.card:has(.dropdown) {
+    z-index: 100 !important;
+    overflow: visible !important;
+}
+
+/* Apenas cards SEM dropdown podem ter overflow hidden */
+.card:not(:has(.dropdown)) {
+    overflow: hidden;
+}
+
+/* Garante que card-body não esconda dropdowns */
+.card-body {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Garante que elementos filhos dos cards não interfiram */
+.card .d-flex,
+.card .position-relative,
+.card .position-absolute:not(.dropdown):not(.dropdown-menu):not(.cert-badge-img) {
+    z-index: 1 !important;
+}
+
+/* Força dropdowns a ficarem sempre visíveis */
+.card .dropdown,
+.card .dropdown-menu {
+    z-index: 9999 !important;
+}
+
+/* Container de linhas e colunas não deve interferir */
+.row,
+.col,
+.col-12,
+.col-md-6,
+.g-3,
+.g-4 {
+    position: relative !important;
+    z-index: auto !important;
+}
+
+/* Seções específicas com dropdowns */
+#certificacoes,
+#idiomas,
+#formacao {
+    position: relative !important;
+    z-index: auto !important;
+}
+
+#certificacoes .row,
+#idiomas .row,
+#formacao .row {
+    position: relative !important;
+}
+
+/* IMPORTANTE: Card que está sendo clicado fica por cima */
+.card:hover:has(.dropdown) {
+    z-index: 10000 !important;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 7px;
+    right: 7px;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px 12px 0 0;
+    z-index: 1;
+}
+
+/* Remove a barrinha de cards com bordas laterais/inferiores grossas */
+.card.border-start::before,
+.card.border-end::before,
+.card.border-top::before,
+.card.border-bottom::before {
+    display: none;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
 }
 
 .card:hover {
-    box-shadow: 0 0.5rem 1.5rem rgba(13, 110, 253, 0.15) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+body.light-mode .card {
+    background: var(--card-bg-light);
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: var(--shadow-sm);
+}
+
+body.light-mode .card:hover {
+    box-shadow: var(--shadow-md), 0 0 30px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
 }
 
 /* Dark Mode - Card Content */
@@ -548,7 +1052,16 @@ body.light-mode .card-subtitle {
    ========================================================================== */
 
 #projectsCarousel {
-    padding: 40px 0;
+    padding: 50px 0 40px 0;
+    overflow: visible;
+}
+
+.carousel-inner {
+    overflow: visible !important;
+}
+
+.carousel-item {
+    overflow: visible !important;
 }
 
 .project-card {
@@ -558,11 +1071,33 @@ body.light-mode .card-subtitle {
 
 .project-card .card {
     min-height: 400px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.project-card .card:hover {
+    border-color: rgba(102, 126, 234, 0.4);
 }
 
 .project-card .card-body {
     display: flex;
     flex-direction: column;
+}
+
+.project-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-mode .project-card .card-title {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Carousel Controls */
@@ -591,21 +1126,21 @@ body.light-mode .card-subtitle {
 
 @media (max-width: 768px) {
     .carousel-control-prev {
-        left: 15px;
+        left: -5px;
     }
     
     .carousel-control-next {
-        right: 15px;
+        right: -5px;
     }
 }
 
 @media (max-width: 576px) {
     .carousel-control-prev {
-        left: 8px;
+        left: -8px;
     }
     
     .carousel-control-next {
-        right: 8px;
+        right: -8px;
     }
 }
 
@@ -689,89 +1224,227 @@ body.light-mode .carousel-indicators [data-bs-target] {
 }
 
 /* ==========================================================================
-   Certificates Badge Images
+   Certificates Badge Images - Enhanced with Credly Style
    ========================================================================== */
 
 .cert-badge-img {
+    position: absolute;
     top: 50%;
-    right: -50px;
+    right: -75px;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    transition: transform 0.2s ease;
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background: var(--card-bg-dark);
+    padding: 2px;
+}
+
+.cert-badge-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.cert-badge-img:hover::before {
+    opacity: 0.1;
 }
 
 .cert-badge-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
 }
 
 .cert-badge-img:hover {
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
 }
 
-/* Mobile adjustments for badges */
+.cert-badge-img:hover img {
+    transform: rotate(5deg);
+}
+
+body.light-mode .cert-badge-img {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: var(--card-bg-light);
+}
+
+body.light-mode .cert-badge-img:hover {
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.25);
+}
+
+/* Cards precisam de overflow visible para badges aparecerem fora */
+#certificacoes .card {
+    overflow: visible !important;
+}
+
+#certificacoes .card-body {
+    padding-right: 1rem !important;
+}
+
+/* Adiciona espaço nas colunas para os badges aparecerem */
+#certificacoes .col-12 {
+    padding-right: 90px !important;
+}
+
+@media (max-width: 991px) {
+    #certificacoes .col-12 {
+        padding-right: 75px !important;
+    }
+}
+
 @media (max-width: 767px) {
-    /* Move badge to bottom left to avoid dropdown collision */
+    #certificacoes .col-12 {
+        padding-right: 15px !important;
+    }
+    
+    /* Previne que padding ultrapasse viewport */
+    section {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    main {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (max-width: 991px) {
+    .cert-badge-img {
+        width: 55px;
+        height: 55px;
+        right: -65px;
+    }
+}
+
+/* Mobile adjustments for badges - mantém dentro do card */
+@media (max-width: 767px) {
     .cert-badge-img {
         top: auto;
-        bottom: 12px;
-        right: auto;
-        left: 12px;
-    transform: none;
-        width: 32px;
-        height: 32px;
-        z-index: 5;
+        bottom: 15px;
+        right: 15px;
+        left: auto;
+        transform: none;
+        width: 45px;
+        height: 45px;
+        z-index: 10;
     }
     
     .cert-badge-img:hover {
-        transform: scale(1.1);
+        transform: scale(1.15);
     }
     
-    /* Add padding to card body to accommodate badge */
     #certificacoes .card-body {
-        padding-bottom: 50px !important;
-        min-height: 70px;
+        padding-right: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    /* Garante que badges não ultrapassem a tela */
+    #certificacoes .col-12 {
+        padding-right: 15px !important;
+        max-width: 100% !important;
+    }
+    
+    #certificacoes .card {
+        overflow: hidden !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 479px) {
+    .cert-badge-img {
+        width: 40px;
+        height: 40px;
+        bottom: 12px;
+        right: 12px;
     }
 }
 
 /* ==========================================================================
-   Floating Buttons
+   Floating Buttons - Enhanced
    ========================================================================== */
 
 #scrollToTopBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1050;
-    width: 42px;
-    height: 42px;
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    z-index: 999999 !important;
+    width: 50px;
+    height: 50px;
     padding: 0;
-    border: 2px solid;
+    border: none;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transform: scale(0) rotate(-180deg);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    pointer-events: auto !important;
+}
+
+#scrollToTopBtn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+#scrollToTopBtn:hover::before {
+    opacity: 0.7;
 }
 
 #scrollToTopBtn.show {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
 }
 
 #scrollToTopBtn:hover {
-    transform: scale(1.08);
+    transform: scale(1.15) rotate(0deg);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+}
+
+#scrollToTopBtn:active {
+    transform: scale(0.95) rotate(0deg);
 }
 
 #theme-toggle-btn {
-    border-radius: 0.25rem;
+    border-radius: 12px;
+    background: var(--gradient-primary);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#theme-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 #theme-toggle-btn .theme-icon-moon {
@@ -786,60 +1459,96 @@ body.light-mode #theme-toggle-btn .theme-icon-moon {
     display: inline-block;
 }
 
+/* Navbar Toggler (Hamburger) */
+.navbar-toggler {
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease;
+    z-index: 10070;
+    position: relative;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.3);
+}
+
+.navbar-toggler:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.05);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(99, 102, 241, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+body.light-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(79, 70, 229, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Navbar - remove TODAS as restrições */
+.navbar,
+.navbar > .container,
+.navbar > .container-fluid {
+    overflow: visible !important;
+    position: relative !important;
+}
+
 /* Navbar mobile adjustments */
 @media (max-width: 991px) {
     .navbar-nav {
         align-items: flex-start !important;
+        width: 100% !important;
     }
     
     .navbar-nav .nav-item {
-        width: 100%;
+        width: 100% !important;
+        margin: 0 !important;
     }
     
     .navbar-nav .nav-link {
-        padding: 0.5rem 0;
+        padding: 0.75rem 1rem !important;
+        border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    body.light-mode .navbar-nav .nav-link {
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
+    }
+    
+    .navbar-nav .nav-item:last-child .nav-link {
+        border-bottom: none !important;
     }
     
     #theme-toggle-btn {
-        margin-top: 0.5rem;
-        width: 100%;
+        margin-top: 0.5rem !important;
+        width: calc(100% - 2rem) !important;
+        margin-left: 1rem !important;
     }
 }
 
-/* Dark mode - transparent button */
-body:not(.light-mode) #scrollToTopBtn {
-    background-color: transparent;
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-body:not(.light-mode) #scrollToTopBtn:hover {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
-
-/* Light mode - transparent button */
+/* Scroll to Top - Theme consistency */
+body:not(.light-mode) #scrollToTopBtn,
 body.light-mode #scrollToTopBtn {
-    background-color: transparent;
-    color: var(--primary);
-    border-color: var(--primary);
+    background: var(--gradient-primary);
+    color: white;
 }
 
+body:not(.light-mode) #scrollToTopBtn:hover,
 body.light-mode #scrollToTopBtn:hover {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
+    filter: brightness(1.1);
 }
 
 /* ==========================================================================
-   Animations
+   Animations - Enhanced
    ========================================================================== */
 
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .animate-on-scroll.is-visible {
@@ -847,27 +1556,71 @@ body.light-mode #scrollToTopBtn:hover {
     transform: translateY(0);
 }
 
+/* Section Titles */
+section h2.display-6 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+}
+
+section h2.display-6::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* Staggered Animation */
+.animate-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+
 /* ==========================================================================
-   Form Styles (Contact Page)
+   Form Styles (Contact Page) - Enhanced
    ========================================================================== */
 
 .form-control {
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 .form-control:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    background: rgba(30, 41, 59, 0.7);
+    transform: translateY(-2px);
 }
 
 textarea.form-control {
     resize: none;
+    min-height: 150px;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
 }
 
 body.light-mode .form-control {
-    background-color: var(--card-bg-light);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--text-light);
     border-color: var(--border-light);
+}
+
+body.light-mode .form-control:focus {
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
 }
 
 body.light-mode .form-label {
@@ -875,15 +1628,15 @@ body.light-mode .form-label {
 }
 
 body:not(.light-mode) .form-control {
-    background-color: var(--card-bg-dark);
+    background: rgba(30, 41, 59, 0.5);
     color: var(--text-dark) !important;
     border-color: var(--border-dark);
 }
 
 body:not(.light-mode) .form-control::placeholder {
     color: var(--text-muted-dark);
-        opacity: 0.7;
-    }
+    opacity: 0.7;
+}
 
 body:not(.light-mode) .form-label {
     color: var(--text-dark) !important;
@@ -894,8 +1647,23 @@ body:not(.light-mode) .form-label {
    ========================================================================== */
 
 @media (max-width: 767px) {
+    /* Previne scroll horizontal */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        width: 100% !important;
+    }
+    
+    /* Garante que todos os containers respeitem a largura da tela */
+    .container,
+    .container-fluid,
+    .row {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
     #hero {
-        padding-top: 60px;
+        padding-top: 80px;
         min-height: 80vh;
     }
     
@@ -914,27 +1682,143 @@ body:not(.light-mode) .form-label {
     .carousel-control-next-icon {
         width: 28px;
         height: 28px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        background-color: rgba(10, 14, 39, 0.7);
+    }
+    
+    body.light-mode .carousel-control-prev-icon,
+    body.light-mode .carousel-control-next-icon {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Botões dos projetos - lado a lado no mobile */
+    .project-card .mt-auto.d-flex {
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+    }
+    
+    .project-card .btn-sm {
+        flex: 1 1 auto !important;
+        white-space: nowrap !important;
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .project-card .btn-sm i {
+        font-size: 0.85rem !important;
     }
     
     /* Floating button - better positioning on mobile */
     #scrollToTopBtn {
-        width: 42px;
-        height: 42px;
+        width: 42px !important;
+        height: 42px !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
         border-width: 2px !important;
-        font-size: 0.95rem;
+        font-size: 0.95rem !important;
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
+        z-index: 999999 !important;
+        pointer-events: auto !important;
     }
 
     #scrollToTopBtn:hover,
     #scrollToTopBtn.show:hover {
-        transform: scale(1.05) !important;
+        transform: scale(1.05) rotate(0deg) !important;
+    }
+    
+    /* Garante que footer não cubra o botão em mobile */
+    footer {
+        z-index: 1 !important;
+    }
+    
+    /* Mobile - Badges and Icons Spacing */
+    .badge {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.7rem !important;
+        margin: 0.2rem !important;
+    }
+    
+    .badge i {
+        font-size: 1rem !important;
+    }
+    
+    .skills-tags .badge {
+        font-size: 0.8rem !important;
+        padding: 0.45rem 0.85rem !important;
+    }
+    
+    .skills-tags .badge i {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Certificações - Mobile Layout */
+    #certificacoes .card {
+        margin-bottom: 1rem !important;
+    }
+    
+    #certificacoes .card-body {
+        padding: 1rem !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    #certificacoes h6 {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #certificacoes .text-muted {
+        font-size: 0.75rem !important;
+    }
+    
+    /* Dropdown button - mobile */
+    .dropdown-toggle {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Badges de projeto - empilhar melhor no mobile */
+    .project-card .badge {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.6rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Hero badges - melhor espaçamento */
+    #hero .badge {
+        display: inline-block !important;
+        margin: 0.25rem 0.15rem !important;
+    }
+    
+    /* Card titles mobile */
+    .card-title {
+        font-size: 1rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .card-subtitle {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.75rem !important;
     }
 }
 
 @media (max-width: 479px) {
+    /* Previne scroll horizontal em telas pequenas */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        width: 100% !important;
+    }
+    
+    .container,
+    .container-fluid,
+    .row {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
     #hero h2 {
         min-height: 4.5em;
     }
@@ -958,6 +1842,14 @@ body:not(.light-mode) .form-label {
     .carousel-control-next-icon {
         width: 26px;
         height: 26px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        background-color: rgba(10, 14, 39, 0.8);
+    }
+    
+    body.light-mode .carousel-control-prev-icon,
+    body.light-mode .carousel-control-next-icon {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
     }
     
     .carousel-control-prev-icon::before,
@@ -968,28 +1860,368 @@ body:not(.light-mode) .form-label {
     
     /* Floating button - ensure visibility on small screens */
     #scrollToTopBtn {
-        width: 40px;
-        height: 40px;
+        width: 40px !important;
+        height: 40px !important;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
         border-width: 2px !important;
-        font-size: 0.9rem;
+        font-size: 0.9rem !important;
         position: fixed !important;
         bottom: 15px !important;
         right: 15px !important;
+        z-index: 999999 !important;
+        pointer-events: auto !important;
     }
     
     #scrollToTopBtn:hover,
     #scrollToTopBtn.show:hover {
-        transform: scale(1.05) !important;
+        transform: scale(1.05) rotate(0deg) !important;
     }
     
-    /* Smaller badges on very small screens */
-    .cert-badge-img {
-        width: 28px !important;
-        height: 28px !important;
-        bottom: 10px !important;
-        left: 10px !important;
+    /* Garante que footer não cubra o botão em telas pequenas */
+    footer {
+        z-index: 1 !important;
     }
+    
+    /* Badges em telas muito pequenas */
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.6rem !important;
+    }
+    
+    .badge i {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Certificações - ajuste para mobile pequeno */
+    #certificacoes h6 {
+        font-size: 0.85rem !important;
+    }
+    
+    #certificacoes .card-body {
+        padding: 0.75rem !important;
+        padding-bottom: 3.5rem !important;
+    }
+    
+    /* Títulos de seção menores */
+    .display-6 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Skills tags mobile pequeno */
+    .skills-tags .card {
+        padding: 0.75rem !important;
+    }
+    
+    .skills-tags h6 {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Projeto Atual - mobile */
+    #projeto-atual h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    #projeto-atual h5 {
+        font-size: 0.9rem !important;
+    }
+    
+    #projeto-atual .small,
+    #projeto-atual small {
+        font-size: 0.75rem !important;
+    }
+    
+    #projeto-atual ul {
+        padding-left: 1.2rem !important;
+    }
+}
+
+/* ==========================================================================
+   Footer - Modern Design
+   ========================================================================== */
+
+footer.footer-modern {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, #0a0e27 0%, #131b33 100%);
+    border-top: 2px solid rgba(102, 126, 234, 0.2);
+    /* Botão scroll to top tem z-index 999999, sempre acima */
+}
+
+body.light-mode footer.footer-modern {
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    border-top: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Footer Brand */
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+body.light-mode .footer-brand {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Footer Titles */
+.footer-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+@media (min-width: 992px) {
+    .text-lg-start .footer-title::after {
+        left: 0;
+        transform: none;
+    }
+    
+    .text-lg-end .footer-title::after {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+}
+
+body.light-mode .footer-title {
+    color: var(--text-light);
+}
+
+/* Social Icons */
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+}
+
+.social-icon:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+body.light-mode .social-icon {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-light);
+}
+
+body.light-mode .social-icon:hover {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Footer Links */
+.footer-links {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-link {
+    color: var(--text-muted-dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.footer-link i {
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover i {
+    color: var(--primary);
+    transform: scale(1.2);
+}
+
+body.light-mode .footer-link {
+    color: var(--text-muted-light);
+}
+
+body.light-mode .footer-link:hover {
+    color: var(--primary);
+}
+
+/* Footer Info */
+.footer-info p {
+    color: var(--text-muted-dark);
+    transition: all 0.3s ease;
+}
+
+.footer-info p:hover {
+    color: var(--text-dark);
+}
+
+body.light-mode .footer-info p {
+    color: var(--text-muted-light);
+}
+
+body.light-mode .footer-info p:hover {
+    color: var(--text-light);
+}
+
+/* Footer Divider */
+.footer-divider {
+    border-color: rgba(102, 126, 234, 0.2) !important;
+    opacity: 0.5;
+}
+
+body.light-mode .footer-divider {
+    border-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Footer Copyright */
+.footer-copyright {
+    color: var(--text-muted-dark);
+    font-size: 0.9rem;
+}
+
+body.light-mode .footer-copyright {
+    color: var(--text-muted-light);
+}
+
+/* Footer GitHub Link */
+.footer-github-link {
+    color: var(--text-muted-dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-github-link:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.footer-github-link i {
+    transition: all 0.3s ease;
+}
+
+.footer-github-link:hover i {
+    transform: scale(1.2) rotate(360deg);
+}
+
+body.light-mode .footer-github-link {
+    color: var(--text-muted-light);
+}
+
+body.light-mode .footer-github-link:hover {
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   Social Icons & Other Elements
+   ========================================================================== */
+
+.nav-link i {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover i {
+    transform: scale(1.2);
+    color: var(--primary);
+}
+
+/* Icon Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+section i.fa-3x,
+section i.fa-2x {
+    transition: all 0.3s ease;
+}
+
+.card:hover i.fa-3x,
+.card:hover i.fa-2x {
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Decorative Elements */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Garantir que o botão scroll fique sempre visível */
+body {
+    position: relative;
+}
+
+main, section {
+    position: relative;
+}
+
+/* Ajuste para âncoras não ficarem escondidas pela navbar fixa */
+section {
+    scroll-margin-top: 70px;
+    margin-bottom: 4rem;
+}
+
+/* Badge enhancements */
+.badge {
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+}
+
+.badge i {
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+/* Small text improvements */
+.small, small {
+    font-size: 0.875rem;
+    opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -1002,6 +2234,10 @@ body:not(.light-mode) .form-label {
     #scroll-progress-container {
         display: none !important;
     }
+    
+    body::before {
+        display: none;
+    }
 }
 
-/* Feito por Rafael Dias Garcia */
+/* Feito por Rafael Dias Garcia - Redesigned with Modern Aesthetics ✨ */
